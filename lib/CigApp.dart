@@ -89,6 +89,12 @@ class _CigAppState extends State<CigApp> {
       //   title: Text("C.I.G."),
       // ),
       body: Container(
+        // decoration: BoxDecoration(
+        //     image: DecorationImage(
+        //         image: AssetImage("images/cig_background.jpg"),
+        //         fit: BoxFit.cover
+        //     )
+        // ),
         alignment: Alignment.center,
         child: ListView(scrollDirection: Axis.vertical, children: <Widget>[
           Container(
@@ -118,246 +124,320 @@ class _CigAppState extends State<CigApp> {
             alignment: Alignment.center,
             child: Column(
               children: <Widget>[
-                InkWell(
-                  // Container(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => where_to_begin()));
-                  },
+                Container(
+                  height: MediaQuery.of(context).size.height*0.15,
+                  width: MediaQuery.of(context).size.width,
+                //  color: Colors.black,
+                  child: InkWell(
+                    // Container(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => where_to_begin()));
+                    },
 
-                  child: Center(
-                    child: CircleAvatar(
-                      backgroundColor: Colors.red,
-                      backgroundImage: AssetImage("images/start1.jpg"),
-                      radius: 60.0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 130.0,right: 130),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height*0.15,
+                       // width: 70,
+                       // color: Colors.black,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.red,
+                          backgroundImage: AssetImage("images/start1.jpg"),
+                          radius: 60.0,
+                        ),
+                      ),
                     ),
                   ),
                 ),
                 Center(
-                    child: Text(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:20.0),
+                      child: Text(
                   "Where to begin?",
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'DavidLibre'),
-                )),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => calculations()));
-                      },
-                      child: Container(
-                          height: 140,
-                          width: 140,
-                          child: Card(
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            elevation: 5,
-                            margin: EdgeInsets.all(20),
-
-                            //width: 50,
-                            //decoration: BoxDecoration(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0)),
-                            color: Colors.redAccent.shade100,
-                            child: Container(
-                              margin: EdgeInsets.only(
-                                  top: 10, bottom: 10, left: 20, right: 20),
-                              //  color: Colors.transparent,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                image: new DecorationImage(
-                                    image:
-                                        AssetImage("images/calculatornew.png")),
-                              ),
-                            ),
-                            //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
-                          )),
-                    ),
-
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => pnpsuggestion()));
-                      },
-                    child: Container(
-                        height: 140,
-                        width: 140,
-                        child: Card(
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            elevation: 5,
-                            margin: EdgeInsets.all(20),
-
-                            //width: 50,
-                            //decoration: BoxDecoration(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0)),
-                            color: Colors.teal.shade900,
-                            child: Container(
-                              //  height: 80,
-                              //  width: 60,
-                              margin: EdgeInsets.only(
-                                  top: 10, bottom: 10, left: 20, right: 20),
-                              //  color: Colors.transparent,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                image: new DecorationImage(
-                                    image: AssetImage("images/bulb.png")),
-                              ),
-                            )
-                            // child:Image.asset("images/bulb.png",cacheHeight: 80,cacheWidth: 60,)
-
-                            )),
-                    ),
-
-                    //child: Text("calculators"),
-
-                    // Container(
-                    //   height: 50,
-                    //   width: 50,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(15.0),
-                    //     color: Colors.indigo.shade300,
-                    //     image: new DecorationImage(image: AssetImage("images/bulb.png")),
-                    //
-                    //   ),
-                    //   child: Text("PNP Suggestion"),
-                    // )
-                  ],
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'DavidLibre'),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    //Spacer(flex: 1,),
+                    )),
 
-                    Text("\t \tcalculations",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'DavidLibre',
-                        )),
-                    Text("PNP Suggestions",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                        fontFamily: 'DavidLibre'))
-                  ],
+                SizedBox(
+                    height:30,
                 ),
+                Container(
+                  height: MediaQuery.of(context).size.height*0.15,
+                  width: MediaQuery.of(context).size.width,
+                 // color:Colors.black,
+                  child: Stack(
+                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Positioned(
+                        top: -2,
+                      left: 20,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => calculations()));
+                          },
+                          child: Container(
+                              height: 140,
+                              width: 140,
+                              child: Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                elevation: 5,
+                                margin: EdgeInsets.all(20),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => pools()));
-                      },
-                      child: Container(
-                          height: 140,
-                          width: 140,
-                          child: Card(
-                            semanticContainer: true,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            elevation: 5,
-                            margin: EdgeInsets.all(20),
-
-                            //width: 50,
-                            //decoration: BoxDecoration(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0)),
-                            color: Colors.teal.shade200,
-                            child: Container(
-                              margin: EdgeInsets.only(
-                                  top: 10, bottom: 10, left: 20, right: 20),
-                              //  color: Colors.transparent,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                image: new DecorationImage(
-                                    image:
-                                    AssetImage("images/trend.png")),
-                              ),
-                            ),
-                            //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
-                          )),
-                    ),
-
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => students()));
-                      },
-                      child: Container(
-                          height: 140,
-                          width: 140,
-                          child: Card(
-                              semanticContainer: true,
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              elevation: 5,
-                              margin: EdgeInsets.all(20),
-
-                              //width: 50,
-                              //decoration: BoxDecoration(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0)),
-                              color: Colors.amber.shade700,
-                              child: Container(
-                                //  height: 80,
-                                //  width: 60,
-                                margin: EdgeInsets.only(
-                                    top: 10, bottom: 10, left: 20, right: 20),
-                                //  color: Colors.transparent,
-                                decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  image: new DecorationImage(
-                                      image: AssetImage("images/reading.png")),
+                                //width: 50,
+                                //decoration: BoxDecoration(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0)),
+                                color: Colors.redAccent.shade100,
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: 10, bottom: 10, left: 20, right: 20),
+                                  //  color: Colors.transparent,
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    image: new DecorationImage(
+                                        image:
+                                            AssetImage("images/calculatornew.png")),
+                                  ),
                                 ),
-                              )
-                            // child:Image.asset("images/bulb.png",cacheHeight: 80,cacheWidth: 60,)
+                                //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
+                              )),
+                        ),
+                      ),
 
-                          )),
-                    ),
+                      Positioned(
+                        top: -2,
+                        right: 20,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => pnpsuggestion()));
+                          },
+                        child: Container(
+                            height: 140,
+                            width: 140,
+                            child: Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                elevation: 5,
+                                margin: EdgeInsets.all(20),
+
+                                //width: 50,
+                                //decoration: BoxDecoration(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0)),
+                                color: Colors.teal.shade900,
+                                child: Container(
+                                  //  height: 80,
+                                  //  width: 60,
+                                  margin: EdgeInsets.only(
+                                      top: 10, bottom: 10, left: 20, right: 20),
+                                  //  color: Colors.transparent,
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    image: new DecorationImage(
+                                        image: AssetImage("images/bulb.png")),
+                                  ),
+                                )
+                                // child:Image.asset("images/bulb.png",cacheHeight: 80,cacheWidth: 60,)
+
+                                )),
+                        ),
+                      ),
+
+                      //child: Text("calculators"),
+
+                      // Container(
+                      //   height: 50,
+                      //   width: 50,
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(15.0),
+                      //     color: Colors.indigo.shade300,
+                      //     image: new DecorationImage(image: AssetImage("images/bulb.png")),
+                      //
+                      //   ),
+                      //   child: Text("PNP Suggestion"),
+                      // )
+                    ],
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height*0.04,
+                 // color: Colors.black,
+                  child: Stack(
+                 //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      //Spacer(flex: 1,),
+
+                      Positioned(
+                        top: 5,
+                        left : 22,
+                        child: Text("\t \tCalculations",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'DavidLibre',
+                            )),
+                      ),
+                      Positioned(
+                        top: 10,
+                        right: 20,
+                        child: Text("PNP Suggestions",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                            fontFamily: 'DavidLibre')),
+                      )
+                    ],
+                  ),
+                ),
+
+                SizedBox(
+                  height: 25,
+                ),
+
+                Container(
+                  height: MediaQuery.of(context).size.height*0.15,
+                  width: MediaQuery.of(context).size.width,
+                 // color: Colors.black,
+                  child: Stack(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+
+                       Positioned(
+                         top: -5,
+                        left: 20,
+                      child:InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => pools()));
+                        },
+
+                          child: Container(
+                              height: 140,
+                              width: 140,
+                              child: Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                elevation: 5,
+                                margin: EdgeInsets.all(20),
+
+                                //width: 50,
+                                //decoration: BoxDecoration(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0)),
+                                color: Colors.teal.shade200,
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: 10, bottom: 10, left: 20, right: 20),
+                                  //  color: Colors.transparent,
+                                  decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    image: new DecorationImage(
+                                        image:
+                                        AssetImage("images/trend.png")),
+                                  ),
+                                ),
+                                //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
+                              )),
+                        ),
+                      ),
+
+                      Positioned(
+                        top: -5,
+                        right: 20,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => students()));
+                          },
+                          child: Container(
+                              height: 140,
+                              width: 140,
+                              child: Card(
+                                  semanticContainer: true,
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  elevation: 5,
+                                  margin: EdgeInsets.all(20),
+
+                                  //width: 50,
+                                  //decoration: BoxDecoration(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0)),
+                                  color: Colors.amber.shade700,
+                                  child: Container(
+                                    //  height: 80,
+                                    //  width: 60,
+                                    margin: EdgeInsets.only(
+                                        top: 10, bottom: 10, left: 20, right: 20),
+                                    //  color: Colors.transparent,
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      image: new DecorationImage(
+                                          image: AssetImage("images/reading.png")),
+                                    ),
+                                  )
+                                // child:Image.asset("images/bulb.png",cacheHeight: 80,cacheWidth: 60,)
+
+                              )),
+                        ),
+                      ),
 
 
-                  ],
+                    ],
+                  ),
                 ),
 
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    //Spacer(flex: 1,),
+                Container(
+                  height: MediaQuery.of(context).size.height*0.04,
+                  width: MediaQuery.of(context).size.width,
+                 // color: Colors.black,
+                  child: Stack(
+                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      //Spacer(flex: 1,),
 
-                    Text("\t \t   Pools",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'DavidLibre',
-                        )),
-                    Text("Students Help",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'DavidLibre'))
-                  ],
+                      Positioned(
+                        left:38,
+                        child: Text("\t \t   Pools",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'DavidLibre',
+                            )),
+                      ),
+                      Positioned(
+                        right: 27,
+                        child: Text("Students Help",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'DavidLibre')),
+                      )
+                    ],
+                  ),
                 ),
 
               ],
@@ -521,23 +601,30 @@ class _calculationsState extends State<calculations> {
             children: [
               Container(
                  // height: 250,
-                  height: MediaQuery.of(context).size.height*0.42,
+                  height: MediaQuery.of(context).size.height*0.35,
                  // width: 350,
                   width: MediaQuery.of(context).size.width*0.9,
                   child: Card(
                     elevation: 5,
-                    margin: EdgeInsets.all(5),
+                   // margin: EdgeInsets.all(5),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Stack(
+                     // crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Center(
-                            child: Text(
-                          "\n STEP 1",
-                          style: TextStyle(color: Colors.grey, fontSize: 18),
-                        )),
-                        Center(
+                        Positioned(
+                          top:0,
+                          left: 143,
+                          //child: Center(
+                              child: Text(
+                            "\n STEP 1",
+                            style: TextStyle(color: Colors.grey, fontSize: 18),
+                        //  )
+                      ),
+                        ),
+                        Positioned(
+                          top: 45,
+                            left: 30,
                             child: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: Text(
@@ -546,43 +633,59 @@ class _calculationsState extends State<calculations> {
                                 color: Colors.deepOrangeAccent, fontSize: 30),
                           ),
                         )),
-                        Center(
+                        Positioned(
+                          top: 105,
+                            left:60,
                             child: Text(
-                          "Are you Eligible to Apply for Canada PR?",
+                          "Are you Eligible to Apply",
                           style: TextStyle(fontSize: 21),
                         )),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: RaisedButton(
-                              onPressed: () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            eligiblitycalci()))
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Center(
-                                    child: Text("calculate Now".toUpperCase(),
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 25))),
+
+                      Positioned(
+                          top: 130,
+                          left:95,
+                      child: Text(
+                        " for Canada PR?",
+                        style: TextStyle(fontSize: 21),
+                      )),
+                        // Center(
+                        Positioned(
+                          top: 180,
+                          left:15,
+                            //padding: const EdgeInsets.all(15.0),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height*0.06,
+                              width:  MediaQuery.of(context).size.height*0.38,
+                              child: RaisedButton(
+                                onPressed: () => {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              eligiblitycalci()))
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Center(
+                                      child: Text("calculate Now".toUpperCase(),
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 25))),
+                                ),
+                                color: Colors.indigo.shade300,
+                                elevation: 5,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12)),
                               ),
-                              color: Colors.indigo.shade300,
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12)),
                             ),
                           ),
-                        ),
+                        // ),
                       ],
                     ),
                   )),
               Container(
                  // height: 250,
-                  height: MediaQuery.of(context).size.height*0.4,
+                  height: MediaQuery.of(context).size.height*0.35,
                   //width: 350,
                   width: MediaQuery.of(context).size.width*0.9,
                   child: Card(
@@ -590,15 +693,19 @@ class _calculationsState extends State<calculations> {
                     margin: EdgeInsets.all(5),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Stack(
+                     // crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Center(
+                        Positioned(
+                          top:25,
+                            left: 143,
                             child: Text(
-                          "\n STEP 2",
+                          "STEP 2",
                           style: TextStyle(color: Colors.grey, fontSize: 18),
                         )),
-                        Center(
+                        Positioned(
+                            top: 55,
+                            left: 60,
                             child: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: Text(
@@ -607,14 +714,28 @@ class _calculationsState extends State<calculations> {
                                 color: Colors.deepOrangeAccent, fontSize: 30),
                           ),
                         )),
-                        Center(
+                        Positioned(
+                            top: 115,
+                            left: 85,
                             child: Text(
-                          "This score will get you the ITA",
+                          "This score will get",
                           style: TextStyle(fontSize: 21),
                         )),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
+
+                        Positioned(
+                            top: 140,
+                            left: 115,
+                            child: Text(
+                              "you THE ITA",
+                              style: TextStyle(fontSize: 21),
+                            )),
+                        Positioned(
+                          top: 180,
+                          left: 15,
+                          child: Container(
+                           // padding: const EdgeInsets.all(15.0),
+                            height: MediaQuery.of(context).size.height*0.06,
+                            width:  MediaQuery.of(context).size.height*0.38,
                             child: RaisedButton(
                               onPressed: () => {
                                 Navigator.push(
@@ -1514,7 +1635,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                             Languagetest1()));
                       },
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(top:8.0,bottom: 8.0,left: 1.0),
                       child: Container(
                         height: 180,
                         //width: 120,
@@ -1529,7 +1650,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                             children: <Widget>[
                               Container(
                                   height: 120,
-                                  width: 100,
+                                  width: MediaQuery.of(context).size.width*0.29,
+                               //   width: 100,
                                   //color: Colors.green,
                                   //child: Card(
                                   //color: Colors.pinkAccent.shade100,
@@ -1582,6 +1704,9 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
               //color: Colors.teal,
             ),
             Container(
+            //  color: Colors.black,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height*0.27,
               alignment: Alignment.center,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -2019,7 +2144,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                     },
 
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(left: 1.0,top: 8.0,bottom: 8.0),
                       child: Container(
                         height: 180,
                         //width: 120,
@@ -2033,8 +2158,9 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                             children: <Widget>[
                               Container(
                                   height: 120,
-                                  width: 100,
-                                  //color: Colors.green,
+                                  width: MediaQuery.of(context).size.width*0.29,
+                                //  width: 100,
+                                //  color: Colors.green,
                                   //child: Card(
                                   //color: Colors.pinkAccent.shade100,
                                   // elevation:5,

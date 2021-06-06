@@ -339,7 +339,7 @@ class _pnpsuggestionState extends State<pnpsuggestion> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height*0.35,
+              height: MediaQuery.of(context).size.height*0.45,
               width: MediaQuery.of(context).size.width*0.90,
               child: ListView(
                 scrollDirection: Axis.vertical,

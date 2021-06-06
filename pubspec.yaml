@@ -44,9 +44,17 @@ dependencies:
   animations: ^1.1.2
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.8.0"
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/ic_launcher.png"
+
+
 
     #syncfusion_flutter_gauges: ^18.2.44
 
@@ -93,6 +101,7 @@ flutter:
     - images/chemistry.png
     - images/stock-market.png
     - images/building.png
+    - images/cig_background.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -105,6 +114,7 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
   fonts:
     - family: DavidLibre
       fonts:
