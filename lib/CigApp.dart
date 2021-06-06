@@ -89,12 +89,12 @@ class _CigAppState extends State<CigApp> {
       //   title: Text("C.I.G."),
       // ),
       body: Container(
-        // decoration: BoxDecoration(
-        //     image: DecorationImage(
-        //         image: AssetImage("images/cig_background.jpg"),
-        //         fit: BoxFit.cover
-        //     )
-        // ),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         alignment: Alignment.center,
         child: ListView(scrollDirection: Axis.vertical, children: <Widget>[
           Container(
@@ -566,6 +566,12 @@ class _calculationsState extends State<calculations> {
     var _index=0;
     return Scaffold(
         body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/cig_background_new.jpg"),
+                  fit: BoxFit.cover
+              )
+          ),
       alignment: Alignment.center,
       child: ListView(
         scrollDirection: Axis.vertical,
@@ -606,6 +612,7 @@ class _calculationsState extends State<calculations> {
                   width: MediaQuery.of(context).size.width*0.9,
                   child: Card(
                     elevation: 5,
+                  // color: Colors.transparent,
                    // margin: EdgeInsets.all(5),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
@@ -817,6 +824,12 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
     var _index =0;
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         alignment: Alignment.center,
         child: ListView(
           scrollDirection: Axis.vertical,
