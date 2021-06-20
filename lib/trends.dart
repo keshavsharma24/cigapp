@@ -25,6 +25,12 @@ class _poolsState extends State<pools> {
     var _index =0;
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         alignment: Alignment.center,
         child: ListView(
           children:<Widget>[

@@ -37,6 +37,12 @@ class _settingState extends State<setting> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         child: ListView(
           //  scrollDirection: Axis.vertical,
             children: <Widget>[

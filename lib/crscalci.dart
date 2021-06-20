@@ -15,6 +15,8 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 //import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import 'colorscheme.dart';
+
 var totalscore= 0;
 var agescore = 0;
 var eduscore =0;
@@ -79,6 +81,12 @@ _getRequest()async{}
        // alignment: Alignment.center,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
       //  color: Colors.orange,
         child: ListView(
         //    scrollDirection: Axis.vertical,
@@ -112,8 +120,8 @@ _getRequest()async{}
               ),
               //Spacer(flex: 1),
               SizedBox(width: 20),
-              FlatButton.icon(onPressed: ()=>{},
-              icon: Icon(Icons.delete_outline,color: Colors.teal,size: 20,), label:Text(""),),
+              // FlatButton.icon(onPressed: ()=>{},
+              // icon: Icon(Icons.delete_outline,color: Colors.teal,size: 20,), label:Text(""),),
 
             ],
           ),
@@ -140,11 +148,12 @@ _getRequest()async{}
                       children:<Widget>[
                         Padding(
                           padding: const EdgeInsets.only(top:20.0,bottom: 20.0,left:15),
-                          child: Text("Score:",style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),),
+                          child: Text("Score:",style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold,
+                          color: Colorscheme.text_blue),),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top:20.0,bottom: 20.0),
-                          child: Text("$totalscore",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
+                          child: Text("$totalscore",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colorscheme.text_blue),),
                         )
                       ],
                     ),
@@ -214,7 +223,7 @@ _getRequest()async{}
                                      // elevation: 10,
                                          // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                                   child: Padding(
-                                    padding: const EdgeInsets.only(top:10.0),
+                                    padding: const EdgeInsets.only(top:10.0,left: 15),
                                     child: Text("Marital Status",style: TextStyle(fontSize: 20),),
                                   )
                                  // ),
@@ -235,9 +244,15 @@ _getRequest()async{}
                                         children: <Widget>[
                                           Container(
                                             alignment: Alignment.center,
-                                            //height: 100,
+                                            height: MediaQuery.of(context).size.height*0.75,
                                             //width: 300,
                                             width: MediaQuery.of(context).size.width*0.75,
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage("images/cig_background_new.jpg"),
+                                                    fit: BoxFit.cover
+                                                )
+                                            ),
                                            // color: Colors.black45,
                                             child:ListView(
                                               scrollDirection: Axis.vertical,
@@ -804,6 +819,7 @@ _getRequest()async{}
                            // width: 190,
                             width: MediaQuery.of(context).size.width*0.46,
                             //color:Colors.green,
+
                             child:Card(
                               elevation: 10,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
@@ -873,6 +889,13 @@ _getRequest()async{}
                                               Container(
                                                 alignment: Alignment.center,
                                                 width: 300,
+                                                height: MediaQuery.of(context).size.height*0.65,
+                                                decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                        image: AssetImage("images/cig_background_new.jpg"),
+                                                        fit: BoxFit.cover
+                                                    )
+                                                ),
                                                 child:ListView(
                                                   scrollDirection: Axis.vertical,
                                                   children:<Widget>[
@@ -1117,24 +1140,27 @@ _getRequest()async{}
                                                         });
                                                         Navigator.pop(context);
                                                       },
-                                                      child: Container(
-                                                        height: 65,
-                                                        width: 350,
-                                                        child: Card(
-                                                          elevation: 5,
-                                                          margin: EdgeInsets.only(
-                                                              top: 3.0, bottom: 3.0),
-                                                          color:
-                                                          Colors.greenAccent.shade100,
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius:
-                                                              BorderRadius.circular(
-                                                                  7.0)),
-                                                          child: Center(
-                                                            child: Text(
-                                                              "Secondary diploma(high school graduation)",
-                                                              style:
-                                                              TextStyle(fontSize: 25),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        child: Container(
+                                                          height: 65,
+                                                          width: 350,
+                                                          child: Card(
+                                                            elevation: 5,
+                                                            margin: EdgeInsets.only(
+                                                                top: 3.0, bottom: 3.0),
+                                                            color:
+                                                            Colors.greenAccent.shade100,
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                BorderRadius.circular(
+                                                                    7.0)),
+                                                            child: Center(
+                                                              child: Text(
+                                                                "Secondary diploma(high school graduation)",
+                                                                style:
+                                                                TextStyle(fontSize: 25),
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -1151,24 +1177,27 @@ _getRequest()async{}
                                                         });
                                                         Navigator.pop(context);
                                                       },
-                                                      child: Container(
-                                                        height: 65,
-                                                        width: 350,
-                                                        child: Card(
-                                                          elevation: 5,
-                                                          margin: EdgeInsets.only(
-                                                              top: 3.0, bottom: 3.0),
-                                                          color:
-                                                          Colors.greenAccent.shade100,
-                                                          shape: RoundedRectangleBorder(
-                                                              borderRadius:
-                                                              BorderRadius.circular(
-                                                                  7.0)),
-                                                          child: Center(
-                                                            child: Text(
-                                                              "None or less then Secondary (High school)",
-                                                              style:
-                                                              TextStyle(fontSize: 25),
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.all(8.0),
+                                                        child: Container(
+                                                          height: 65,
+                                                          width: 350,
+                                                          child: Card(
+                                                            elevation: 5,
+                                                            margin: EdgeInsets.only(
+                                                                top: 3.0, bottom: 3.0),
+                                                            color:
+                                                            Colors.greenAccent.shade100,
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                BorderRadius.circular(
+                                                                    7.0)),
+                                                            child: Center(
+                                                              child: Text(
+                                                                "None or less then Secondary (High school)",
+                                                                style:
+                                                                TextStyle(fontSize: 25),
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -1396,7 +1425,13 @@ _getRequest()async{}
                                               Container(
                                                 alignment: Alignment.center,
                                                 width: 300,
-                                                height: MediaQuery.of(context).size.height*0.5,
+                                                height: MediaQuery.of(context).size.height*0.45,
+                                                decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                        image: AssetImage("images/cig_background_new.jpg"),
+                                                        fit: BoxFit.cover
+                                                    )
+                                                ),
                                                 child:ListView(
                                                   scrollDirection: Axis.vertical,
                                                   children:<Widget>[
@@ -1786,6 +1821,12 @@ class _crsanalysisState extends State<crsanalysis> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         child: ListView(
             children: <Widget>[
 
@@ -2226,6 +2267,12 @@ class _additional_pointsState extends State<additional_points> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         child: ListView(
             children: <Widget>[
 
@@ -2437,6 +2484,12 @@ class _workexprienceState extends State<workexprience> {
         Scaffold(
           body: Container(
        alignment: Alignment.center,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("images/cig_background_new.jpg"),
+                    fit: BoxFit.cover
+                )
+            ),
      // decoration: BoxDecoration(image: DecorationImage(image:AssetImage("images/workexppic.png")) ),
 
       //    child: ListView(
@@ -2527,6 +2580,12 @@ class _LanguagetestState extends State<Languagetest> {
     return Scaffold(
         body: Container(
         alignment: Alignment.center,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/cig_background_new.jpg"),
+                  fit: BoxFit.cover
+              )
+          ),
         child: ListView(
           children: <Widget>[
 
@@ -2802,6 +2861,12 @@ class _languagescoreState extends State<languagescore> {
       return Scaffold(
         body: Container(
           alignment: Alignment.center,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/cig_background_new.jpg"),
+                  fit: BoxFit.cover
+              )
+          ),
           child: ListView(
               children: <Widget>[
 
@@ -2984,6 +3049,12 @@ class _languagescoreState extends State<languagescore> {
       return Scaffold(
         body: Container(
           alignment: Alignment.center,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/cig_background_new.jpg"),
+                  fit: BoxFit.cover
+              )
+          ),
           child: ListView(
               children: <Widget>[
 

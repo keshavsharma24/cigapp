@@ -35,6 +35,12 @@ class _studentsState extends State<students> {
     return Scaffold(
       body:Container(
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         child: ListView(
             scrollDirection: Axis.vertical,
             children: <Widget>[
@@ -80,44 +86,52 @@ class _studentsState extends State<students> {
               //         MaterialPageRoute(
               //             builder: (context) => pools()));
               //   },
-                OpenContainer(
-                    openElevation: 0,
-                    closedElevation: 0,
-                    //closedColor: Colors.transparent,
-                    transitionType: ContainerTransitionType.fade,
-                   transitionDuration: Duration(milliseconds: 500) ,
-                  openBuilder: (BuildContext context, void Function({Object returnValue}) action) {return faculty();  },
-                  closedBuilder: (BuildContext context, VoidCallback openContainer) { return  Container(
-                      height: MediaQuery.of(context).size.height*0.30,
-                      width: MediaQuery.of(context).size.width*0.70,
-                      child: Card(
-                        semanticContainer: true,
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        elevation: 5,
-                        margin: EdgeInsets.all(20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 18.0,right: 18.0,top: 18.0,bottom: 18.0),
+                  child: OpenContainer(
+                      openElevation: 0,
+                      closedElevation: 0,
+                      //closedColor: Colors.transparent,
+                      transitionType: ContainerTransitionType.fade,
+                     transitionDuration: Duration(milliseconds: 500) ,
+                    openBuilder: (BuildContext context, void Function({Object returnValue}) action) {return faculty();  },
+                    closedBuilder: (BuildContext context, VoidCallback openContainer) { return  Container(
+                        height: MediaQuery.of(context).size.height*0.30,
+                        width: MediaQuery.of(context).size.width*0.70,
+                         // RoundedRectangleBorder(
+                         //    borderRadius: BorderRadius.circular(15.0)),
+                        child: Card(
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          elevation: 5,
+                         // margin: EdgeInsets.all(20),
+                         // height: MediaQuery.of(context).size.height*0.30,
+                         // width: MediaQuery.of(context).size.width*0.70,
 
-                        //width: 50,
-                        //decoration: BoxDecoration(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0)),
-                        color: Colors.teal.shade200,
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              top: 10, bottom: 10, left: 20, right: 20),
-                          //  color: Colors.transparent,
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            image: new DecorationImage(
-                                image:
-                                AssetImage("images/graduate.png")),
+
+                          //width: 50,
+                          //decoration: BoxDecoration(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15.0)),
+                          color: Colors.teal.shade200,
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                top: 10, bottom: 10, left: 20, right: 20),
+                            //  color: Colors.transparent,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              image: new DecorationImage(
+                                  image:
+                                  AssetImage("images/graduate.png")),
+                            ),
                           ),
-                        ),
-                        //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
-                      )
-                  );
-                  },
-                     // (BuildContext context, void Function() action) {  },
+                          //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
+                        )
+                    );
+                    },
+                       // (BuildContext context, void Function() action) {  },
 
+                  ),
                 ),
       ],
                 ),

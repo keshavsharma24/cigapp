@@ -60,6 +60,12 @@ class _pnpsuggestionState extends State<pnpsuggestion> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         child: ListView(
          // scrollDirection: Axis.vertical,
           children:<Widget>[
@@ -106,7 +112,10 @@ class _pnpsuggestionState extends State<pnpsuggestion> {
                       children:<Widget>[
                       Row(
                         children:<Widget>[
-                          Text("Your NOC Code",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 18.0),
+                            child: Text("Your NOC Code",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                          ),
                           Container(
                             width: 100,
                             height: 30,
@@ -198,7 +207,7 @@ class _pnpsuggestionState extends State<pnpsuggestion> {
                         Row(
                           children:<Widget>[
                             Padding(
-                              padding: const EdgeInsets.only(top:15.0),
+                              padding: const EdgeInsets.only(top:15.0,left: 18.0),
                               child: Text("Your CRS Score",style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),),
                             ),
                             Container(
@@ -296,256 +305,292 @@ class _pnpsuggestionState extends State<pnpsuggestion> {
 
             ),
 
-            Container(
-              width: MediaQuery.of(context).size.width*0.90,
-              height: MediaQuery.of(context).size.height*0.15,
-              child: Card(
-                elevation: 0.5,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0)),
-                child: ListView(
-                  //scrollDirection: Axis.horizontal,
-                  children:<Widget>[
-                    Text("PNP's You Can Opt For",style: TextStyle(fontSize: 20),),
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children:<Widget>[
-                          Container(
-                            height: 20,
-                            width: 20,
-                            color: Colors.teal,
-                          ),
-                          Text("Eligible",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                          Container(
-                            height: 20,
-                            width: 20,
-                            color: Colors.grey,
-                          ),
-                          Text("Not Eligible",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                          Container(
-                            height: 20,
-                            width: 20,
-                            color: Colors.lightBlue.shade200,
-                          ),
-                          Text("More info reqd.",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-
-                        ],
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width*0.90,
+                height: MediaQuery.of(context).size.height*0.15,
+                child: Card(
+                  elevation: 0.5,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0)),
+                  child: ListView(
+                    //scrollDirection: Axis.horizontal,
+                    children:<Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 18.0,top: 10.0,bottom: 10),
+                        child: Text("PNP's You Can Opt For",style: TextStyle(fontSize: 20),),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children:<Widget>[
+                            Container(
+                              height: 20,
+                              width: 20,
+                              color: Colors.teal,
+                            ),
+                            Text("Eligible",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                            Container(
+                              height: 20,
+                              width: 20,
+                              color: Colors.grey,
+                            ),
+                            Text("Not Eligible",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                            Container(
+                              height: 20,
+                              width: 20,
+                              color: Colors.lightBlue.shade200,
+                            ),
+                            Text("More info reqd.",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-            Container(
-              height: MediaQuery.of(context).size.height*0.45,
-              width: MediaQuery.of(context).size.width*0.90,
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children:<Widget>[
-                 // InkWell(
-                 //   onTap: (){
-                 //     setState(() {
-                 //       if(CrsInputController >= 465.toString()){
-                 //         Color:Colors.teal;
-                 //       }
-                 //     });
-                 //   },
-                 // )
-                  InkWell(
-                    onTap: (){
-                      setState(() {
-                        if(crsvalue > 470 && ontario.contains(nocvalue)){
-                          onteligible = true;
-                        }
-                        else{ontnoeeligible = true;}
-                      });
-                    },
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                height: MediaQuery.of(context).size.height*0.45,
+                width: MediaQuery.of(context).size.width*0.90,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children:<Widget>[
+                   // InkWell(
+                   //   onTap: (){
+                   //     setState(() {
+                   //       if(CrsInputController >= 465.toString()){
+                   //         Color:Colors.teal;
+                   //       }
+                   //     });
+                   //   },
+                   // )
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          if(crsvalue > 470 && ontario.contains(nocvalue)){
+                            onteligible = true;
+                          }
+                          else{ontnoeeligible = true;}
+                        });
+                      },
 
-                    child: Container(
-                     height: 70,
+                      child: Container(
+                       height: 70,
 
-                     child: Card(
-                       shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(12.0)),
-                       color: onteligible?Colors.teal :ontnoeeligible?Colors.grey:Colors.white,
-                       child:RichText(
-                         text: TextSpan(
-                             text: "OINP-Ontario",
-                             style: TextStyle(fontSize: 20,color: Colors.black),
+                       child: Card(
+                         shape: RoundedRectangleBorder(
+                             borderRadius: BorderRadius.circular(12.0)),
+                         color: onteligible?Colors.teal :ontnoeeligible?Colors.grey:Colors.white,
+                         child:Padding(
+                           padding: const EdgeInsets.only(top: 8.0,left: 18),
+                           child: RichText(
+                             text: TextSpan(
+                                 text: "OINP-Ontario",
+                                 style: TextStyle(fontSize: 20,color: Colors.black),
 
-                             children: [
-                               TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
-                             ]
+                                 children: [
+                                   TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
+                                 ]
+                             ),
+                           ),
                          ),
                        ),
                      ),
-                   ),
-                  ),
+                    ),
 
-                   InkWell(
-                    onTap: (){
-                      setState(() {
-                        if(crsvalue > 450){
-                          albeligible =true;
-                        }
-                        else{
-                          albnoteligible = true;
-                        }
-                      });
-                    },
+                     InkWell(
+                      onTap: (){
+                        setState(() {
+                          if(crsvalue > 450){
+                            albeligible =true;
+                          }
+                          else{
+                            albnoteligible = true;
+                          }
+                        });
+                      },
+                      child: Container(
+                        height: 70,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0)),
+                          color: albeligible?Colors.teal :albnoteligible?Colors.grey:Colors.white,
+                          child:Padding(
+                           // padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.only(top: 8.0,left: 18),
+                            child: RichText(
+                              text: TextSpan(
+                                  text: "AINP-Alberta",
+                                  style: TextStyle(fontSize: 20,color: Colors.black),
+
+                                  children: [
+                                    TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
+                                  ]
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                     ),
+
+
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          if(crsvalue > 300 && Alberta.contains(nocvalue)){
+                            novaeligible =true;
+                          }
+                          else{
+                            novanoteligible= true;
+                          }
+                        });
+                      },
                     child: Container(
                       height: 70,
                       child: Card(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0)),
-                        color: albeligible?Colors.teal :albnoteligible?Colors.grey:Colors.white,
-                        child:RichText(
-                          text: TextSpan(
-                              text: "AINP-Alberta",
+                        color: novaeligible?Colors.teal :novanoteligible?Colors.grey:Colors.white,
+                        child:Padding(
+                         // padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(top: 8.0,left: 18),
+                          child: RichText(
+                            text: TextSpan(
+                                text: "NSNP-Nova scotia",
+                                style: TextStyle(fontSize: 20,color: Colors.black),
+
+                                children: [
+                                  TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
+                                ]
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+      ),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          if(crsvalue < 420 && Alberta.contains(nocvalue)){
+                            sasknoteligible =true;
+                          }
+                          else{
+                            saskeligible = true;
+                          }
+                        });
+                      },
+                    child: Container(
+                      height: 70,
+                      child: Card(
+
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0)),
+                        color: saskeligible?Colors.lightBlue.shade200 :sasknoteligible?Colors.grey:Colors.white,
+                        child:Padding(
+                        //  padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(top: 8.0,left: 18),
+                          child: RichText(
+                            text: TextSpan(
+                              text: "SINP-Saskatchwan",
                               style: TextStyle(fontSize: 20,color: Colors.black),
 
                               children: [
                                 TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
                               ]
+                            ),
                           ),
                         ),
+
+
                       ),
                     ),
-                   ),
-
-
-                  InkWell(
-                    onTap: (){
-                      setState(() {
-                        if(crsvalue > 300 && Alberta.contains(nocvalue)){
-                          novaeligible =true;
-                        }
-                        else{
-                          novanoteligible= true;
-                        }
-                      });
-                    },
-                  child: Container(
-                    height: 70,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0)),
-                      color: novaeligible?Colors.teal :novanoteligible?Colors.grey:Colors.white,
-                      child:RichText(
-                        text: TextSpan(
-                            text: "NSNP-Nova scotia",
-                            style: TextStyle(fontSize: 20,color: Colors.black),
-
-                            children: [
-                              TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
-                            ]
-                        ),
-                      ),
                     ),
-                  ),
-      ),
-                  InkWell(
-                    onTap: (){
-                      setState(() {
-                        if(crsvalue < 420 && Alberta.contains(nocvalue)){
-                          sasknoteligible =true;
-                        }
-                        else{
-                          saskeligible = true;
-                        }
-                      });
-                    },
-                  child: Container(
-                    height: 70,
-                    child: Card(
-
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0)),
-                      color: saskeligible?Colors.lightBlue.shade200 :sasknoteligible?Colors.grey:Colors.white,
-                      child:RichText(
-                        text: TextSpan(
-                          text: "SINP-Saskatchwan",
-                          style: TextStyle(fontSize: 20,color: Colors.black),
-
-                          children: [
-                            TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
-                          ]
-                        ),
-                      ),
-
-
-                    ),
-                  ),
-                  ),
 
       InkWell(
         onTap: (){
           setState(() {
-            if(crsvalue > 450){
-              manieligible =true;
-            }
-            else{
-              maninoteligible = true;
-            }
+              if(crsvalue > 450){
+                manieligible =true;
+              }
+              else{
+                maninoteligible = true;
+              }
           });
         },
-                  child: Container(
-                    height: 70,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0)),
-                      color: manieligible?Colors.teal :maninoteligible?Colors.grey:Colors.white,
-                     // child:Text("MPNP-Manitoba",style: TextStyle(fontSize: 20)),
-                      child:RichText(
-                        text: TextSpan(
-                            text: "MPNP-Manitoba",
-                            style: TextStyle(fontSize: 20,color: Colors.black),
+                    child: Container(
+                      height: 70,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0)),
+                        color: manieligible?Colors.teal :maninoteligible?Colors.grey:Colors.white,
+                       // child:Text("MPNP-Manitoba",style: TextStyle(fontSize: 20)),
+                        child:Padding(
+                          //padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(top: 8.0,left: 18),
+                          child: RichText(
+                            text: TextSpan(
+                                text: "MPNP-Manitoba",
+                                style: TextStyle(fontSize: 20,color: Colors.black),
 
-                            children: [
-                              TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
-                            ]
+                                children: [
+                                  TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
+                                ]
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
 
       ),
 
-                   InkWell(
-                     onTap: (){
-                       setState(() {
-                         if(crsvalue > 250){
-                           peieligible =true;
-                         }
-                         else{
-                           peinoteligible = true;
-                         }
-                       });
-                     },
-                   child: Container(
-                    height: 70,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12.0)),
-                            color: peieligible?Colors.lightBlue.shade200:peinoteligible?Colors.grey:Colors.white,
-                      //child:Text("PEI-Prince Edward",style: TextStyle(fontSize: 20)),
-                      child:RichText(
-                        text: TextSpan(
-                            text: "PEI-Prince Edward",
-                            style: TextStyle(fontSize: 20,color: Colors.black),
+                     InkWell(
+                       onTap: (){
+                         setState(() {
+                           if(crsvalue > 250){
+                             peieligible =true;
+                           }
+                           else{
+                             peinoteligible = true;
+                           }
+                         });
+                       },
+                     child: Container(
+                      height: 70,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0)),
+                              color: peieligible?Colors.lightBlue.shade200:peinoteligible?Colors.grey:Colors.white,
+                        //child:Text("PEI-Prince Edward",style: TextStyle(fontSize: 20)),
+                        child:Padding(
+                          //padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(top: 8.0,left: 18),
+                          child: RichText(
+                            text: TextSpan(
+                                text: "PEI-Prince Edward",
+                                style: TextStyle(fontSize: 20,color: Colors.black),
 
-                            children: [
-                              TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
-                            ]
+                                children: [
+                                  TextSpan(text: '\n tap to know your status',style:TextStyle(fontSize: 12,color: Colors.grey), )
+                                ]
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                   ),
+                     ),
 
-                ],
+                    SizedBox(
+                      height: 40,
+                    )
+
+                  ],
+                ),
               ),
             ),
 

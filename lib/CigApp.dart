@@ -16,6 +16,8 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 //import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import 'colorscheme.dart';
+
 var agevalue = 0.0;
 var agecentervalue = "0";
 var educationvalue = 0.0;
@@ -158,7 +160,8 @@ class _CigAppState extends State<CigApp> {
                       child: Text(
                   "Where to begin?",
                   style: TextStyle(
-                        color: Colors.black,
+                       // color: Colors.black,
+                      color: Color.fromRGBO(62,75,102,1),
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'DavidLibre'),
@@ -287,7 +290,8 @@ class _CigAppState extends State<CigApp> {
                         left : 22,
                         child: Text("\t \tCalculations",
                             style: TextStyle(
-                              color: Colors.black,
+                            //  color: Colors.black,
+                              color: Color.fromRGBO(62,75,102,1),
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'DavidLibre',
@@ -298,7 +302,8 @@ class _CigAppState extends State<CigApp> {
                         right: 20,
                         child: Text("PNP Suggestions",
                             style: TextStyle(
-                                color: Colors.black,
+                              //  color: Colors.black,
+                                color: Color.fromRGBO(62,75,102,1),
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                             fontFamily: 'DavidLibre')),
@@ -421,7 +426,8 @@ class _CigAppState extends State<CigApp> {
                         left:38,
                         child: Text("\t \t   Pools",
                             style: TextStyle(
-                              color: Colors.black,
+                             // color: Colors.black,
+                              color: Color.fromRGBO(62,75,102,1),
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'DavidLibre',
@@ -431,7 +437,8 @@ class _CigAppState extends State<CigApp> {
                         right: 27,
                         child: Text("Students Help",
                             style: TextStyle(
-                                color: Colors.black,
+                                //color: Colors.black,
+                                color: Color.fromRGBO(62,75,102,1),
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'DavidLibre')),
@@ -489,6 +496,12 @@ class where_to_begin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/cig_background_new.jpg"),
+                  fit: BoxFit.cover
+              )
+          ),
       alignment: Alignment.center,
       child: ListView(
         scrollDirection: Axis.vertical,
@@ -610,9 +623,18 @@ class _calculationsState extends State<calculations> {
                   height: MediaQuery.of(context).size.height*0.35,
                  // width: 350,
                   width: MediaQuery.of(context).size.width*0.9,
+               //   color: Colors.transparent,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("images/cig_background_new.jpg"),
+                          fit: BoxFit.cover
+                      )
+                  ),
+
                   child: Card(
                     elevation: 5,
                   // color: Colors.transparent,
+                  //  color: Color.fromRGBO(62,75,102,1),
                    // margin: EdgeInsets.all(5),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0)),
@@ -625,7 +647,7 @@ class _calculationsState extends State<calculations> {
                           //child: Center(
                               child: Text(
                             "\n STEP 1",
-                            style: TextStyle(color: Colors.grey, fontSize: 18),
+                            style: TextStyle(color: Color.fromRGBO(62,75,102,1), fontSize: 18),
                         //  )
                       ),
                         ),
@@ -645,7 +667,7 @@ class _calculationsState extends State<calculations> {
                             left:60,
                             child: Text(
                           "Are you Eligible to Apply",
-                          style: TextStyle(fontSize: 21),
+                          style: TextStyle(fontSize: 21,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
                         )),
 
                       Positioned(
@@ -653,7 +675,7 @@ class _calculationsState extends State<calculations> {
                           left:95,
                       child: Text(
                         " for Canada PR?",
-                        style: TextStyle(fontSize: 21),
+                        style: TextStyle(fontSize: 21,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
                       )),
                         // Center(
                         Positioned(
@@ -708,7 +730,7 @@ class _calculationsState extends State<calculations> {
                             left: 143,
                             child: Text(
                           "STEP 2",
-                          style: TextStyle(color: Colors.grey, fontSize: 18),
+                          style: TextStyle(color: Color.fromRGBO(62,75,102,1), fontSize: 18),
                         )),
                         Positioned(
                             top: 55,
@@ -726,7 +748,7 @@ class _calculationsState extends State<calculations> {
                             left: 85,
                             child: Text(
                           "This score will get",
-                          style: TextStyle(fontSize: 21),
+                          style: TextStyle(fontSize: 21,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
                         )),
 
                         Positioned(
@@ -734,7 +756,7 @@ class _calculationsState extends State<calculations> {
                             left: 115,
                             child: Text(
                               "you THE ITA",
-                              style: TextStyle(fontSize: 21),
+                              style: TextStyle(fontSize: 21,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
                             )),
                         Positioned(
                           top: 180,
@@ -883,6 +905,13 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                       //height: 100,
                                      // width: 300,
                                       width: MediaQuery.of(context).size.width*0.8,
+                                      height: MediaQuery.of(context).size.height*0.68,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage("images/cig_background_new.jpg"),
+                                              fit: BoxFit.cover
+                                          )
+                                      ),
                                       child: Column(
                                         children: <Widget>[
                                           InkWell(
@@ -1226,6 +1255,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                               });
                                               Navigator.pop(context);
                                             },
+                                           // child: ageBox('45'),
                                             child: Container(
                                               height: 45,
                                               width: 350,
@@ -1261,6 +1291,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                         width: MediaQuery.of(context).size.width*0.29,
                         child: Card(
                           elevation: 5,
+                        //  shape: BorderRadius.circular(12),
 
                           // elevation: 15,
                           // color: Colors.deepOrange,
@@ -1289,7 +1320,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                         agecentervalue,
                                         style: TextStyle(
                                             fontSize: 20.0,
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontWeight.bold,color: Color.fromRGBO(62,75,102,1),),
                                       ),
                                       animation: true,
                                       animationDuration: 1200,
@@ -1302,7 +1333,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   "Age",
                                   style: TextStyle(
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.bold,color: Color.fromRGBO(62,75,102,1),),
                                 ),
                               ),
                             ],
@@ -1326,7 +1357,14 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                     Container(
                                       alignment: Alignment.center,
                                       //width: 300,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage("images/cig_background_new.jpg"),
+                                              fit: BoxFit.cover
+                                          )
+                                      ),
                                       width: MediaQuery.of(context).size.width*0.8,
+                                      height: MediaQuery.of(context).size.height*0.7 ,
                                       child: Column(
                                         children: <Widget>[
                                           InkWell(
@@ -1615,7 +1653,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                           educationcentervalue,
                                           style: TextStyle(
                                               fontSize: 20.0,
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontWeight.bold,color: Color.fromRGBO(62,75,102,1)),
                                         ),
                                         animation: true,
                                         animationDuration: 1200,
@@ -1628,7 +1666,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                     "Education",
                                     style: TextStyle(
                                         fontSize: 15,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromRGBO(62,75,102,1)),
                                   ),
                                 ),
                               ],
@@ -1685,7 +1724,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                         _accumulativelanguagescore1().toString(),
                                         style: TextStyle(
                                             fontSize: 20.0,
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontWeight.bold,
+                                        color: Colorscheme.text_blue),
                                       ),
                                       animation: true,
                                       animationDuration: 1200,
@@ -1698,7 +1738,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   "Language \n Proficiency",
                                   style: TextStyle(
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.bold,color: Colorscheme.text_blue),
                                 ),
                               ),
                             ],
@@ -1735,9 +1775,15 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   overflow: Overflow.visible,
                                   children: <Widget>[
                                     Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage("images/cig_background_new.jpg"),
+                                              fit: BoxFit.cover
+                                          )
+                                      ),
                                       alignment: Alignment.center,
-                                      height: 450,
-                                      width: 300,
+                                      height:  MediaQuery.of(context).size.height*0.5,
+                                      width: MediaQuery.of(context).size.width*0.8,
                                       child: Column(
                                         children: <Widget>[
                                           InkWell(
@@ -1967,7 +2013,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                         workexpriencecentervalue,
                                         style: TextStyle(
                                             fontSize: 20.0,
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontWeight.bold,
+                                        color: Colorscheme.text_blue),
                                       ),
                                       animation: true,
                                       animationDuration: 1200,
@@ -1980,7 +2027,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   "Work \nExperience",
                                   style: TextStyle(
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.bold,
+                                  color: Colorscheme.text_blue),
                                 ),
                               ),
                             ],
@@ -2002,15 +2050,25 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   overflow: Overflow.visible,
                                   children: <Widget>[
                                     Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage("images/cig_background_new.jpg"),
+                                              fit: BoxFit.cover
+                                          )
+                                      ),
                                       alignment: Alignment.center,
-                                      height: 250,
-                                      width: 300,
+                                      height: MediaQuery.of(context).size.height*0.3,
+                                      width: MediaQuery.of(context).size.width*0.8,
                                       child: Column(
                                         children: <Widget>[
-                                          Text(
-                                            "Do You have Arranged Employment",
-                                            style: TextStyle(fontSize: 20,
-                                                fontWeight: FontWeight.bold),),
+                                          Padding(
+                                            padding: const EdgeInsets.all(18.0),
+                                            child: Text(
+                                              "Do You have Arranged Employment",
+                                              style: TextStyle(fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                              color: Colorscheme.text_blue),),
+                                          ),
                                           InkWell(
                                             onTap: () {
                                               setState(() {
@@ -2039,7 +2097,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "NO",
                                                       style: TextStyle(
-                                                          fontSize: 25),
+                                                          fontSize: 25,
+                                                      color: Colorscheme.text_blue,),
                                                     ),
                                                   ),
                                                 ),
@@ -2075,7 +2134,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "YES",
                                                       style: TextStyle(
-                                                          fontSize: 25),
+                                                          fontSize: 25,
+                                                      color: Colorscheme.text_blue),
                                                     ),
                                                   ),
                                                 ),
@@ -2126,7 +2186,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                           arrangedemploymentcenter,
                                           style: TextStyle(
                                               fontSize: 20.0,
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontWeight.bold,
+                                          color: Colorscheme.text_blue),
                                         ),
                                         animation: true,
                                         animationDuration: 1200,
@@ -2139,7 +2200,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                     "Arranged \nEmployment",
                                     style: TextStyle(
                                         fontSize: 15,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold,
+                                    color: Colorscheme.text_blue),
                                   ),
                                 ),
                               ],
@@ -2193,7 +2255,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                         adaptabilitycentervalue,
                                         style: TextStyle(
                                             fontSize: 20.0,
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontWeight.bold,
+                                        color: Colorscheme.text_blue),
                                       ),
                                       animation: true,
                                       animationDuration: 1200,
@@ -2206,7 +2269,8 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   "Adaptability",
                                   style: TextStyle(
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                                      fontWeight: FontWeight.bold,
+                                  color: Colorscheme.text_blue),
                                 ),
                               ),
                             ],
@@ -2232,7 +2296,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text("Your Eligibility Score", style: TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold)),
+                      fontSize: 20, fontWeight: FontWeight.bold,color: Colorscheme.text_blue)),
                   Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -2242,12 +2306,12 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                             "$totaleligibilityscore", style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              color: Colors.amber),),
+                              color: totaleligibilityscore == 0?Colorscheme.text_blue:Colors.amber),),
 
                         ),
                         Container(
                           child: Text("/100", style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),),
+                              fontSize: 20, fontWeight: FontWeight.bold,color:Colorscheme.text_blue),),
                         )
                       ],
                     ),
@@ -2283,7 +2347,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   children:<Widget>[
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Center(child: Text("Sorry! you are not eligible",style: TextStyle(fontSize: 20,),)),
+                                  child: Center(child: Text("Sorry! you are not eligible",style: TextStyle(fontSize: 20,color: Colorscheme.text_blue),)),
                                 ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -2295,7 +2359,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                     child: Container(height: 60,width: 150,
 
 
-                                      child:RaisedButton(onPressed: (){Navigator.pop(context);},child:Text("Go Back",style: TextStyle(fontSize: 15),),color:Colors.amber,
+                                      child:RaisedButton(onPressed: (){Navigator.pop(context);},child:Text("Go Back",style: TextStyle(fontSize: 15,color: Colorscheme.text_blue),),color:Colors.amber,
                                           shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(10) ,))
                                     ),
                                   ),
@@ -2342,7 +2406,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                           context,
                                           MaterialPageRoute(builder: (context)=>
                                               crscalci()));
-                                      },child:Text("Count CRS points",style: TextStyle(fontSize: 15),),color:Colors.amber,
+                                      },child:Text("Count CRS points",style: TextStyle(fontSize: 15,color: Colorscheme.text_blue),),color:Colors.amber,
                                       shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(10) ,)),
                                       ),
                                     ),
@@ -2356,7 +2420,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                   }
                 },
 
-                child:Text("Check if you are eligible?",style:TextStyle(fontSize: 18),),color: Colors.amber,elevation: 5,shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(10) ),),
+                child:Text("Check if you are eligible?",style:TextStyle(fontSize: 18,color: Colorscheme.text_blue),),color: Colors.amber,elevation: 5,shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(10) ),),
               ),
               ),
             ),
@@ -2398,6 +2462,33 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
       ),
     );
   }
+  Widget ageBox(String age){
+    return
+      Container(
+        height: 45,
+        width: 350,
+        //  child: Card(
+        //     color:
+        //    // Colors.greenAccent.shade100,
+        //     Colors.transparent,
+        decoration: BoxDecoration(
+            borderRadius:
+            BorderRadius.circular(7.0),
+            color: Colors.transparent,
+            border: Border.all(color:Colors.deepOrangeAccent)
+        ),
+
+        //  elevation: 5,
+        margin: EdgeInsets.all(3),
+        child: Center(
+            child: Text(
+              "Age: $age",
+              style:
+              TextStyle(fontSize: 27),
+            )),
+        // ),
+      );
+  }
 }
 
 class adaptabilityclass extends StatefulWidget {
@@ -2411,6 +2502,12 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         child: ListView(
           children:<Widget>[
             // showDialog(
@@ -2454,6 +2551,7 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
                           alignment: Alignment.center,
                           height: 700,
                           width: 300,
+
                           child: Column(
                             children: <Widget>[
                               Padding(
@@ -2461,7 +2559,7 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
                                 child: Text(
                                   "Select your valid options",
                                   style: TextStyle(fontSize: 20,
-                                      fontWeight: FontWeight.bold),),
+                                      fontWeight: FontWeight.bold,color: Colorscheme.text_blue),),
                               ),
                               // Container(
                               //   height: 700,
@@ -2498,23 +2596,27 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
 
                                             Container(
                                               height: 80,
-                                              width: 210,
+                                              width: MediaQuery.of(context).size.width*0.7,
                                               //  child:Card(
                                               //   elevation: 5,
                                               margin: EdgeInsets.only(
                                                   top: 3.0, bottom: 3.0),
-                                              // color: Colors
-                                              //     .amber,
+                                               // color: Colors
+                                               //     .amber,
 
                                               child: Center(
-                                                child: Text(
-                                                  "Your spouse partner's Language test greater then CLB4",
-                                                  style: TextStyle(
-                                                      fontSize: 20),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(left: 28.0),
+                                                    child: Text(
+                                                      "Your spouse partner's Language test greater then CLB4",
+                                                      style: TextStyle(
+                                                          fontSize: 20,
+                                                      color: Colorscheme.text_blue),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                              //   ),
-                                            ),
+
                                             Semantics(
                                               child:Container(
                                                 height: 80,
@@ -2556,7 +2658,7 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
 
                                             Container(
                                               height: 80,
-                                              width: 210,
+                                              width: MediaQuery.of(context).size.width*0.7,
                                               //  child:Card(
                                               //   elevation: 5,
                                               margin: EdgeInsets.only(
@@ -2565,10 +2667,14 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
                                               //     .amber,
 
                                               child: Center(
-                                                child: Text(
-                                                  "Your past studies in canada at least 2 years full time",
-                                                  style: TextStyle(
-                                                      fontSize: 20),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(left: 28.0),
+                                                  child: Text(
+                                                    "Your past studies in canada at least 2 years full time",
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                    color: Colorscheme.text_blue),
+                                                  ),
                                                 ),
                                               ),
                                               //   ),
@@ -2615,7 +2721,7 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
 
                                             Container(
                                               height: 80,
-                                              width: 210,
+                                              width: MediaQuery.of(context).size.width*0.7,
                                               //  child:Card(
                                               //   elevation: 5,
                                               margin: EdgeInsets.only(
@@ -2624,10 +2730,13 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
                                               //     .amber,
 
                                               child: Center(
-                                                child: Text(
-                                                  "Your past work experience in canada of at least one year",
-                                                  style: TextStyle(
-                                                      fontSize: 20),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(left: 28.0),
+                                                  child: Text(
+                                                    "Your past work experience in canada of at least one year",
+                                                    style: TextStyle(
+                                                        fontSize: 20,color: Colorscheme.text_blue),
+                                                  ),
                                                 ),
                                               ),
                                               //   ),
@@ -2665,6 +2774,7 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
                                         padding: const EdgeInsets.only(bottom:15.0),
                                         child: Card(
                                           elevation:5,
+                                         // color: Colorscheme.white,
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                               BorderRadius.circular(
@@ -2676,7 +2786,7 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
 
                                               Container(
                                                 height: 80,
-                                                width: 210,
+                                                width: MediaQuery.of(context).size.width*0.7,
                                                 //  child:Card(
                                                 //   elevation: 5,
                                                 margin: EdgeInsets.only(
@@ -2685,10 +2795,14 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
                                                 //     .amber,
 
                                                 child: Center(
-                                                  child: Text(
-                                                    "Blood relatives in canada",
-                                                    style: TextStyle(
-                                                        fontSize: 20),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(left: 28.0),
+                                                    child: Text(
+                                                      "Blood relatives in canada",
+                                                      style: TextStyle(
+                                                          fontSize: 20,
+                                                      color: Colorscheme.text_blue),
+                                                    ),
                                                   ),
                                                 ),
                                                 //   ),
@@ -2775,13 +2889,6 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
                           ),
                         ),
 
-
-                        // ],
-                        //    ),
-                //       ],
-                //     ),
-                //   );
-                // });
         ],
         ),
       ),
@@ -2801,6 +2908,12 @@ class _Languagetest1State extends State<Languagetest1> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
         child: ListView(
           children: <Widget>[
 
@@ -2835,7 +2948,8 @@ class _Languagetest1State extends State<Languagetest1> {
                   children:<Widget>[
                     Padding(
                       padding: const EdgeInsets.only(top:8.0),
-                      child: Text("Select English Language",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
+                      child: Text("Select English Language",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,
+                      color: Colorscheme.text_blue),),
                     ),
 
                     Row(
@@ -2944,7 +3058,8 @@ class _Languagetest1State extends State<Languagetest1> {
                       padding: const EdgeInsets.only(top:8.0),
                       child: Padding(
                         padding: const EdgeInsets.only(top:40.0),
-                        child: Text("Select French Language",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
+                        child: Text("Select French Language",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,
+                        color: Colorscheme.text_blue),),
                       ),
                     ),
                     Row(
@@ -3074,11 +3189,12 @@ class _Languagetest1State extends State<Languagetest1> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) =>
                     languagescore1()));
               }
-                //  else
-                //       {
-                //          final snackbar= SnackBar(content: Text("unchosen item"),duration: Duration(seconds: 5),elevation: 5);
-                //             Scaffold.of(context).showSnackBar(snackbar);
-                // }
+                 else if(checkedvalue1 == true || checkvalue1 == true && navalue1 == false || tcfvalue1 == false || tefvalue1 == false)
+                      {
+                         final snackbar= SnackBar(content: Text("CHOOSE FRENCH LANGUAGE"),duration: Duration(seconds: 5),elevation: 5);
+                      //    Scaffold.of(context).showSnackBar(snackbar);
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                }
               },
 
               child: Padding(
@@ -3086,7 +3202,8 @@ class _Languagetest1State extends State<Languagetest1> {
                 child:Container(
                   // color: Colors.black,
                   child:
-                  Text("Next>>>",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),),
+                  Text("Next>>>",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,
+                  color: Colorscheme.text_blue),),),
               ),
             ),
           ],
@@ -3114,6 +3231,12 @@ class _languagescore1State extends State<languagescore1> {
       return Scaffold(
         body: Container(
           alignment: Alignment.center,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/cig_background_new.jpg"),
+                  fit: BoxFit.cover
+              )
+          ),
           child: ListView(
               children: <Widget>[
 
@@ -3170,7 +3293,7 @@ class _languagescore1State extends State<languagescore1> {
                               children: <TextSpan>[
                                 new TextSpan(text: " Language Score",
                                     style: TextStyle(
-                                        fontSize: 30, color: Colors.black))
+                                        fontSize: 30, color: Colorscheme.text_blue))
                               ])
                           ),
                         ),
@@ -3218,7 +3341,7 @@ class _languagescore1State extends State<languagescore1> {
                               children: <TextSpan>[
                                 new TextSpan(text: " Language Score",
                                     style: TextStyle(
-                                        fontSize: 30, color: Colors.black))
+                                        fontSize: 30, color: Colorscheme.text_blue))
                               ])
                           ),
                         ),
@@ -3352,7 +3475,7 @@ class _languagescore1State extends State<languagescore1> {
                               children: <TextSpan>[
                                 new TextSpan(text: " Language Score",
                                     style: TextStyle(
-                                        fontSize: 30, color: Colors.black))
+                                        fontSize: 30, color: Colorscheme.text_blue))
                               ])
                           ),
                         ),
@@ -3400,7 +3523,7 @@ class _languagescore1State extends State<languagescore1> {
                               children: <TextSpan>[
                                 new TextSpan(text: " Language Score",
                                     style: TextStyle(
-                                        fontSize: 30, color: Colors.black))
+                                        fontSize: 30, color: Colorscheme.text_blue))
                               ])
                           ),
                         ),
@@ -3482,6 +3605,9 @@ class _languagescore1State extends State<languagescore1> {
     };
 
   }
+
+
+
 }
 
 
