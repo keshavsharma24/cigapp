@@ -3,18 +3,23 @@
 
 import 'package:cigapp/books.dart';
 import 'package:cigapp/crscalci.dart';
+import 'package:cigapp/login.dart';
 import 'package:cigapp/pnp.dart';
 import 'package:cigapp/students.dart';
 import 'package:cigapp/settings.dart';
 import 'package:cigapp/trends.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 //import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'colorscheme.dart';
 
@@ -51,7 +56,7 @@ int englishlanguagescore1 =0;
 int frenchlanguagescore1 =0;
 int accumulativelanguagescore1 = 0;
 
-bool Homeselected =false;
+bool Homeselected =true;
 bool Ebookselected =false;
 bool settingsselected =false;
 
@@ -63,8 +68,98 @@ class CigApp extends StatefulWidget {
 
 class _CigAppState extends State<CigApp> {
 
-  int _index =0;
+  int _tabindex =0;
+  Razorpay razorpay;
+  TextEditingController textEditingController = new TextEditingController();
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  @override
+  void initState() {
+    super.initState();
 
+    razorpay = new Razorpay();
+
+    razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, handlerPaymentSuccess);
+    razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, handlerErrorFailure);
+    razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, handlerExternalWallet);
+    _firebaseAuth.onAuthStateChanged.listen((FirebaseUser user) {
+         if(user!=null)
+        {
+           emailid=user.email.toString();
+        }
+
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    razorpay.clear();
+  }
+
+  void openCheckout(){
+    var options = {
+      "key" : "rzp_test_VquAirD97JZDly",
+      "amount" : 10*100,
+      "name" : "CIG App",
+      "description" : "Payment for the Guide Books",
+      "prefill" : {
+        "contact" : "8169537162",
+        "email" : "keshavsharma156@gmail.com",
+      },
+      "external" : {
+        "wallets" : ["paytm"]
+      }
+    };
+
+    try{
+      razorpay.open(options);
+
+    }catch(e){
+      print(e.toString());
+    }
+
+  }
+
+  void handlerPaymentSuccess(){
+    print("Payment success");
+    Fluttertoast.showToast(
+        msg: "Payment success",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        //  timeInSecForIos: 1,
+        backgroundColor: Colors.blueAccent,
+        textColor: Colors.white,
+        fontSize: 16.0);
+
+  }
+
+  void handlerErrorFailure(){
+    print("Payment error");
+    Fluttertoast.showToast(
+        msg: "Payment error",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        //  timeInSecForIos: 1,
+        backgroundColor: Colors.blueAccent,
+        textColor: Colors.white,
+        fontSize: 16.0);
+
+
+  }
+
+  void handlerExternalWallet(){
+    print("External Wallet");
+    Fluttertoast.showToast(
+        msg: "External Wallet",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        //  timeInSecForIos: 1,
+        backgroundColor: Colors.blueAccent,
+        textColor: Colors.white,
+        fontSize: 16.0);
+
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -87,298 +182,149 @@ class _CigAppState extends State<CigApp> {
 
     ];
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("C.I.G."),
-      // ),
-      body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("images/cig_background_new.jpg"),
-                fit: BoxFit.cover
-            )
-        ),
-        alignment: Alignment.center,
-        child: ListView(scrollDirection: Axis.vertical, children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(20),
-            height: 80,
-            child: Container(
-              //elevation: 5,
-              //shape: RoundedRectangleBorder(
-              //    borderRadius: BorderRadius.circular(20.5)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "Canada Immigration Guide",
-                    style: TextStyle(
-                      fontFamily: 'DancingScript',
-                      fontSize: 30,
-                      color: Colors.deepOrange,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            //child: Text("",style: TextStyle(fontSize: 18,color: Colors.amberAccent),),
+      body:getScreen(context),
+      bottomNavigationBar:
+      BottomNavigationBar(
+        onTap: (_index){
+          setState(() {
+            if (_index ==0){
+              Homeselected = true;
+              Ebookselected =false;
+              settingsselected=false;
+            }
+            else if(_index ==1){
+              Ebookselected =true;
+              Homeselected=false;
+              settingsselected=false;
+            }
+            else if(_index ==2) {
+              settingsselected =true;
+              Homeselected =false;
+              Ebookselected =false;
+            }
+            _tabindex=_index;
+          });
+
+        },
+          currentIndex: _tabindex,
+          selectedItemColor: Colors.deepOrangeAccent.shade200,
+          type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home),title: Text("Home")),
+          BottomNavigationBarItem(icon: Icon(Icons.library_books),title: Text("E-Book")),
+          BottomNavigationBarItem(icon: Icon(Icons.settings),title: Text("Settings")),
+        ],
+      ),
+    );
+  }
+
+  Widget getScreen(BuildContext context)
+  {
+
+    if(Homeselected)
+    {
+      return Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/cig_background_new.jpg"),
+                  fit: BoxFit.cover
+              )
           ),
-          Container(
-            alignment: Alignment.center,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  height: MediaQuery.of(context).size.height*0.15,
-                  width: MediaQuery.of(context).size.width,
-                //  color: Colors.black,
-                  child: InkWell(
-                    // Container(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => where_to_begin()));
-                    },
+          alignment: Alignment.center,
+          child: ListView(scrollDirection: Axis.vertical, children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(20),
+              height: 80,
+              child: Container(
+                //elevation: 5,
+                //shape: RoundedRectangleBorder(
+                //    borderRadius: BorderRadius.circular(20.5)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "Canada Immigration Guide",
+                      style: TextStyle(
+                        fontFamily: 'DancingScript',
+                        fontSize: 30,
+                        color: Colors.deepOrange,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              //child: Text("",style: TextStyle(fontSize: 18,color: Colors.amberAccent),),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.15,
+                    width: MediaQuery.of(context).size.width,
+                    //  color: Colors.black,
+                    child: InkWell(
+                      // Container(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => where_to_begin()));
+                      },
 
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 130.0,right: 130),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height*0.15,
-                       // width: 70,
-                       // color: Colors.black,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.red,
-                          backgroundImage: AssetImage("images/start1.jpg"),
-                          radius: 60.0,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 130.0,right: 130),
+                        child: Container(
+                          height: MediaQuery.of(context).size.height*0.15,
+                          // width: 70,
+                          // color: Colors.black,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.red,
+                            backgroundImage: AssetImage("images/start1.jpg"),
+                            radius: 60.0,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top:20.0),
-                      child: Text(
-                  "Where to begin?",
-                  style: TextStyle(
-                       // color: Colors.black,
-                      color: Color.fromRGBO(62,75,102,1),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'DavidLibre'),
-                ),
-                    )),
-
-                SizedBox(
-                    height:30,
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height*0.15,
-                  width: MediaQuery.of(context).size.width,
-                 // color:Colors.black,
-                  child: Stack(
-                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Positioned(
-                        top: -2,
-                      left: 20,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => calculations()));
-                          },
-                          child: Container(
-                              height: 140,
-                              width: 140,
-                              child: Card(
-                                semanticContainer: true,
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                elevation: 5,
-                                margin: EdgeInsets.all(20),
-
-                                //width: 50,
-                                //decoration: BoxDecoration(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0)),
-                                color: Colors.redAccent.shade100,
-                                child: Container(
-                                  margin: EdgeInsets.only(
-                                      top: 10, bottom: 10, left: 20, right: 20),
-                                  //  color: Colors.transparent,
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    image: new DecorationImage(
-                                        image:
-                                            AssetImage("images/calculatornew.png")),
-                                  ),
-                                ),
-                                //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
-                              )),
-                        ),
-                      ),
-
-                      Positioned(
-                        top: -2,
-                        right: 20,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => pnpsuggestion()));
-                          },
-                        child: Container(
-                            height: 140,
-                            width: 140,
-                            child: Card(
-                                semanticContainer: true,
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                elevation: 5,
-                                margin: EdgeInsets.all(20),
-
-                                //width: 50,
-                                //decoration: BoxDecoration(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0)),
-                                color: Colors.teal.shade900,
-                                child: Container(
-                                  //  height: 80,
-                                  //  width: 60,
-                                  margin: EdgeInsets.only(
-                                      top: 10, bottom: 10, left: 20, right: 20),
-                                  //  color: Colors.transparent,
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    image: new DecorationImage(
-                                        image: AssetImage("images/bulb.png")),
-                                  ),
-                                )
-                                // child:Image.asset("images/bulb.png",cacheHeight: 80,cacheWidth: 60,)
-
-                                )),
-                        ),
-                      ),
-
-                      //child: Text("calculators"),
-
-                      // Container(
-                      //   height: 50,
-                      //   width: 50,
-                      //   decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(15.0),
-                      //     color: Colors.indigo.shade300,
-                      //     image: new DecorationImage(image: AssetImage("images/bulb.png")),
-                      //
-                      //   ),
-                      //   child: Text("PNP Suggestion"),
-                      // )
-                    ],
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height*0.04,
-                 // color: Colors.black,
-                  child: Stack(
-                 //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      //Spacer(flex: 1,),
-
-                      Positioned(
-                        top: 5,
-                        left : 22,
-                        child: Text("\t \tCalculations",
-                            style: TextStyle(
-                            //  color: Colors.black,
+                  Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top:20.0),
+                        child: Text(
+                          "Where to begin?",
+                          style: TextStyle(
+                            // color: Colors.black,
                               color: Color.fromRGBO(62,75,102,1),
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'DavidLibre',
-                            )),
-                      ),
-                      Positioned(
-                        top: 10,
-                        right: 20,
-                        child: Text("PNP Suggestions",
-                            style: TextStyle(
-                              //  color: Colors.black,
-                                color: Color.fromRGBO(62,75,102,1),
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                            fontFamily: 'DavidLibre')),
-                      )
-                    ],
-                  ),
-                ),
-
-                SizedBox(
-                  height: 25,
-                ),
-
-                Container(
-                  height: MediaQuery.of(context).size.height*0.15,
-                  width: MediaQuery.of(context).size.width,
-                 // color: Colors.black,
-                  child: Stack(
-                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-
-                       Positioned(
-                         top: -5,
-                        left: 20,
-                      child:InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => pools()));
-                        },
-
-                          child: Container(
-                              height: 140,
-                              width: 140,
-                              child: Card(
-                                semanticContainer: true,
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                elevation: 5,
-                                margin: EdgeInsets.all(20),
-
-                                //width: 50,
-                                //decoration: BoxDecoration(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0)),
-                                color: Colors.teal.shade200,
-                                child: Container(
-                                  margin: EdgeInsets.only(
-                                      top: 10, bottom: 10, left: 20, right: 20),
-                                  //  color: Colors.transparent,
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    image: new DecorationImage(
-                                        image:
-                                        AssetImage("images/trend.png")),
-                                  ),
-                                ),
-                                //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
-                              )),
+                              fontFamily: 'DavidLibre'),
                         ),
-                      ),
+                      )),
 
-                      Positioned(
-                        top: -5,
-                        right: 20,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => students()));
-                          },
-                          child: Container(
-                              height: 140,
-                              width: 140,
-                              child: Card(
+                  SizedBox(
+                    height:30,
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.15,
+                    width: MediaQuery.of(context).size.width,
+                    // color:Colors.black,
+                    child: Stack(
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Positioned(
+                          top: -2,
+                          left: 20,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => calculations()));
+                            },
+                            child: Container(
+                                height: 140,
+                                width: 140,
+                                child: Card(
                                   semanticContainer: true,
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
                                   elevation: 5,
@@ -388,106 +334,694 @@ class _CigAppState extends State<CigApp> {
                                   //decoration: BoxDecoration(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15.0)),
-                                  color: Colors.amber.shade700,
+                                  color: Colors.redAccent.shade100,
                                   child: Container(
-                                    //  height: 80,
-                                    //  width: 60,
                                     margin: EdgeInsets.only(
                                         top: 10, bottom: 10, left: 20, right: 20),
                                     //  color: Colors.transparent,
                                     decoration: BoxDecoration(
                                       color: Colors.transparent,
                                       image: new DecorationImage(
-                                          image: AssetImage("images/reading.png")),
+                                          image:
+                                          AssetImage("images/calculatornew.png")),
                                     ),
-                                  )
-                                // child:Image.asset("images/bulb.png",cacheHeight: 80,cacheWidth: 60,)
-
-                              )),
+                                  ),
+                                  //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
+                                )),
+                          ),
                         ),
-                      ),
 
+                        Positioned(
+                          top: -2,
+                          right: 20,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => pnpsuggestion()));
+                            },
+                            child: Container(
+                                height: 140,
+                                width: 140,
+                                child: Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(20),
 
-                    ],
+                                    //width: 50,
+                                    //decoration: BoxDecoration(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15.0)),
+                                    color: Colors.teal.shade900,
+                                    child: Container(
+                                      //  height: 80,
+                                      //  width: 60,
+                                      margin: EdgeInsets.only(
+                                          top: 10, bottom: 10, left: 20, right: 20),
+                                      //  color: Colors.transparent,
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                        image: new DecorationImage(
+                                            image: AssetImage("images/bulb.png")),
+                                      ),
+                                    )
+                                  // child:Image.asset("images/bulb.png",cacheHeight: 80,cacheWidth: 60,)
+
+                                )),
+                          ),
+                        ),
+
+                        //child: Text("calculators"),
+
+                        // Container(
+                        //   height: 50,
+                        //   width: 50,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(15.0),
+                        //     color: Colors.indigo.shade300,
+                        //     image: new DecorationImage(image: AssetImage("images/bulb.png")),
+                        //
+                        //   ),
+                        //   child: Text("PNP Suggestion"),
+                        // )
+                      ],
+                    ),
                   ),
-                ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height*0.04,
+                    // color: Colors.black,
+                    child: Stack(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        //Spacer(flex: 1,),
 
-
-                Container(
-                  height: MediaQuery.of(context).size.height*0.04,
-                  width: MediaQuery.of(context).size.width,
-                 // color: Colors.black,
-                  child: Stack(
-                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      //Spacer(flex: 1,),
-
-                      Positioned(
-                        left:38,
-                        child: Text("\t \t   Pools",
-                            style: TextStyle(
-                             // color: Colors.black,
-                              color: Color.fromRGBO(62,75,102,1),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'DavidLibre',
-                            )),
-                      ),
-                      Positioned(
-                        right: 27,
-                        child: Text("Students Help",
-                            style: TextStyle(
-                                //color: Colors.black,
+                        Positioned(
+                          top: 5,
+                          left : 22,
+                          child: Text("\t \tCalculations",
+                              style: TextStyle(
+                                //  color: Colors.black,
                                 color: Color.fromRGBO(62,75,102,1),
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                fontFamily: 'DavidLibre')),
-                      )
-                    ],
+                                fontFamily: 'DavidLibre',
+                              )),
+                        ),
+                        Positioned(
+                          top: 10,
+                          right: 20,
+                          child: Text("PNP Suggestions",
+                              style: TextStyle(
+                                //  color: Colors.black,
+                                  color: Color.fromRGBO(62,75,102,1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'DavidLibre')),
+                        )
+                      ],
+                    ),
                   ),
+
+                  SizedBox(
+                    height: 25,
+                  ),
+
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.15,
+                    width: MediaQuery.of(context).size.width,
+                    // color: Colors.black,
+                    child: Stack(
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+
+                        Positioned(
+                          top: -5,
+                          left: 20,
+                          child:InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => pools()));
+                            },
+
+                            child: Container(
+                                height: 140,
+                                width: 140,
+                                child: Card(
+                                  semanticContainer: true,
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  elevation: 5,
+                                  margin: EdgeInsets.all(20),
+
+                                  //width: 50,
+                                  //decoration: BoxDecoration(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0)),
+                                  color: Colors.teal.shade200,
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                        top: 10, bottom: 10, left: 20, right: 20),
+                                    //  color: Colors.transparent,
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      image: new DecorationImage(
+                                          image:
+                                          AssetImage("images/trend.png")),
+                                    ),
+                                  ),
+                                  //child:Image.asset("images/calci34567.jpg",cacheHeight: 80,cacheWidth: 60,)
+                                )),
+                          ),
+                        ),
+
+                        Positioned(
+                          top: -5,
+                          right: 20,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => students()));
+                            },
+                            child: Container(
+                                height: 140,
+                                width: 140,
+                                child: Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(20),
+
+                                    //width: 50,
+                                    //decoration: BoxDecoration(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15.0)),
+                                    color: Colors.amber.shade700,
+                                    child: Container(
+                                      //  height: 80,
+                                      //  width: 60,
+                                      margin: EdgeInsets.only(
+                                          top: 10, bottom: 10, left: 20, right: 20),
+                                      //  color: Colors.transparent,
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                        image: new DecorationImage(
+                                            image: AssetImage("images/reading.png")),
+                                      ),
+                                    )
+                                  // child:Image.asset("images/bulb.png",cacheHeight: 80,cacheWidth: 60,)
+
+                                )),
+                          ),
+                        ),
+
+
+                      ],
+                    ),
+                  ),
+
+
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.04,
+                    width: MediaQuery.of(context).size.width,
+                    // color: Colors.black,
+                    child: Stack(
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        //Spacer(flex: 1,),
+
+                        Positioned(
+                          left:38,
+                          child: Text("\t \t   Pools",
+                              style: TextStyle(
+                                // color: Colors.black,
+                                color: Color.fromRGBO(62,75,102,1),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'DavidLibre',
+                              )),
+                        ),
+                        Positioned(
+                          right: 27,
+                          child: Text("Students Help",
+                              style: TextStyle(
+                                //color: Colors.black,
+                                  color: Color.fromRGBO(62,75,102,1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'DavidLibre')),
+                        )
+                      ],
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+
+          ]),
+
+        );
+    }
+    else if(Ebookselected)
+    {
+        return Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/cig_background_new.jpg"),
+                  fit: BoxFit.cover
+              )
+          ),
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: <Widget>[
+              Container(
+
+                margin: EdgeInsets.only(top: 20, bottom: 5),
+                height: 25,
+                width: MediaQuery.of(context).size.width*0.45,
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    FlatButton.icon(
+                        onPressed: () => {Navigator.pop(context)},
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.teal,
+                          size: 20,
+                        ),
+                        label: Text("")),
+                    Center(
+                      child: Text(
+                        "Guide Books",
+                        style: TextStyle(
+                            color: Colors.teal,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    //Spacer(flex: 1),
+                    // SizedBox(width: 20),
+                    // FlatButton.icon(onPressed: ()=>{},
+                    //   icon: Icon(Icons.delete_outline,color: Colors.teal,size: 20,), label:Text(""),),
+
+                  ],
                 ),
 
-              ],
-            ),
+              ),
+              Column(
+                children:<Widget>[
+                  //     ListView(
+                  // scrollDirection: Axis.vertical,
+                  //   children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                    child: Container(
+                      // width: MediaQuery.of(context).size.width*0.95,
+                      //  child: Card(
+
+                      decoration: BoxDecoration(
+                        //image: DecorationImage(
+                        //   image: AssetImage("images/cig_background_new.jpg"),
+                        //  fit: BoxFit.cover,
+                        //),
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.transparent,
+                      ),
+                      //   elevation: 5,
+                      //  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      child:Column(
+                        children:<Widget>[
+                          Row(
+                            children:<Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25.0),
+                                child: Container(
+                                  height:120,
+                                  width: MediaQuery.of(context).size.width*0.25,
+                                  // color: Colors.black,
+                                  decoration: BoxDecoration(
+                                    // border: Border(bottom: BorderSide(color: Colors.black45)),
+                                    // color: Colors.transparent,
+                                    image: new DecorationImage(
+                                        image: AssetImage("images/books.png")),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left:18.0),
+                                child: Container(
+                                  child: Column(
+                                    children:<Widget>[
+                                      Text("Name: Guide through"
+                                          "\n Express Entry",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromRGBO(62,75,102,1),),),
+                                      Text("Pages: 45",style: TextStyle(fontSize: 20,color: Color.fromRGBO(62,75,102,1),),),
+                                      Text("Author: Keshav",style: TextStyle(fontSize: 20,color: Color.fromRGBO(62,75,102,1),),),
+                                      Text("Context: This book will "
+                                          "\n guide you through "
+                                          "\n all the needs and"
+                                          "\n procedure to grab "
+                                          "\n chance to be PR of \n Canada through"
+                                          "\n Express Entry mode \nand Much More... ",style: TextStyle(fontSize: 20,color: Color.fromRGBO(62,75,102,1),),)
+
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(30.0),
+                            child: RaisedButton(
+                              onPressed: (){
+                                // Navigator.push(context,MaterialPageRoute(builder: (context) =>
+                                //     Transaction())),
+                                openCheckout();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Center(
+                                    child: Text("Buy now".toUpperCase(),
+                                        style: TextStyle(color: Colors.white, fontSize: 25,fontFamily: 'DavidLibre'))),
+                              ),
+                              color: Colors.deepOrangeAccent.shade200,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12)),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                    ),
+                  ),
+                  //  ),
+                  //    ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(top:15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        //image: DecorationImage(
+                        //   image: AssetImage("images/cig_background_new.jpg"),
+                        //  fit: BoxFit.cover,
+                        //),
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.transparent,
+                      ),
+                      // width: MediaQuery.of(context).size.width*0.95,
+                      //  child: Card(
+                      //   elevation: 5,
+                      //  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      child:Column(
+                        children:<Widget>[
+                          Row(
+                            children:<Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25.0),
+                                child: Container(
+                                  height:120,
+                                  width: MediaQuery.of(context).size.width*0.25,
+                                  // color: Colors.black,
+                                  decoration: BoxDecoration(
+                                    // border: Border(bottom: BorderSide(color: Colors.black45)),
+                                    // color: Colors.transparent,
+                                    image: new DecorationImage(
+                                        image: AssetImage("images/briefcase.png")),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left:18.0),
+                                child: Container(
+                                  child: Column(
+                                    children:<Widget>[
+                                      Text("Name: Guide through"
+                                          "\n PNP",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromRGBO(62,75,102,1),),),
+                                      Text("Pages: 45",style: TextStyle(fontSize: 20,color: Color.fromRGBO(62,75,102,1),),),
+                                      Text("Author: Keshav",style: TextStyle(fontSize: 20,color: Color.fromRGBO(62,75,102,1),),),
+                                      Text("Context: This book will "
+                                          "\n guide you through "
+                                          "\n all the needs and"
+                                          "\n procedure to grab "
+                                          "\n chance to be PR of \n Canada through"
+                                          "\n PNP mode \nand Much More... ",style: TextStyle(fontSize: 20,color: Color.fromRGBO(62,75,102,1),),),
+
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(30.0),
+                            child: RaisedButton(
+                              onPressed: (){
+                                // Navigator.push(context,MaterialPageRoute(builder: (context) =>
+                                //     Transaction())),
+                                openCheckout();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Center(
+                                    child: Text("Buy now".toUpperCase(),
+                                        style: TextStyle(color: Colors.white, fontSize: 25,fontFamily: 'DavidLibre'))),
+                              ),
+                              color: Colors.deepOrangeAccent.shade200,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12)),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                    ),
+                  ),
+                  //   ],
+                  // ),
+                  //   ),
+                ],
+              ),
+
+            ],
           ),
+        );
+    }else
+    {
+      return Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/cig_background_new.jpg"),
+                fit: BoxFit.cover
+            )
+        ),
+        child: ListView(
+          //  scrollDirection: Axis.vertical,
+          children: <Widget>[
+            Container(
 
-        ]),
+              margin: EdgeInsets.only(top: 20, bottom: 5),
+              height: 25,
+              width: MediaQuery.of(context).size.width*0.45,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
 
-      ),
-      bottomNavigationBar:
-      BottomNavigationBar(
-          onTap: (_index){
-            setState(() {
-              if (_index ==0){
-                Homeselected = true;
-                Ebookselected =false;
-                settingsselected=false;
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> CigApp()));
-              }
-              else if(_index ==1){
-                Ebookselected =true;
-                Homeselected=false;
-                settingsselected=false;
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> books()));
-              }
-              else if(_index ==2) {
-                settingsselected =true;
-                Homeselected =false;
-                Ebookselected =false;
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> setting()));
-              }
-            });
-          },
-          currentIndex: _index,
-          selectedItemColor: Colors.deepOrangeAccent.shade200,
-          type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home),title: Text("Home")),
-            BottomNavigationBarItem(icon: Icon(Icons.library_books),title: Text("E-Book")),
-            BottomNavigationBarItem(icon: Icon(Icons.settings),title: Text("Settings")),
+                  Text(
+                    "Settings",
+                    style: TextStyle(
+                        color: Colors.teal,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                  )
+                  //Spacer(flex: 1),
+
+
+                ],
+              ),
+
+            ),
+
+            Container(
+              height: MediaQuery.of(context).size.height*0.28,
+              width: MediaQuery.of(context).size.width*0.87,
+              child:ListView(
+                scrollDirection: Axis.vertical,
+                children:<Widget>[
+
+                  //  StreamBuilder (
+                  // //var uid = await getData();
+                  //
+                  //  stream: Firestore.instance.collection('userinfo').snapshots(),
+                  //  builder: (context, snapshot)   {
+                  //    if (!snapshot.hasData)
+                  //      return Text("Loading Data... Plese wait");
+                  //
+                  //   final  uid =  getData();
+                  //    return
+
+
+                  Card(
+                    color: Colors.indigo.shade300,
+                    child: Column(
+                      children: <Widget>[
+                        FlatButton.icon(onPressed: null,
+                          icon: Icon(
+                            Icons.account_circle,
+                            color: Colors.white,
+                            size: 150,
+                          ),
+                          label: Text(""),),
+                        Text(emailid.toString(),
+                          style: TextStyle(color: Colors.white,
+                              fontSize: 20,
+                              fontFamily: 'DavidLibre'),),
+
+                      ],
+                    ),
+
+                  ),
+                  // },
+                  // ),
+                ],
+              ),
+            ),
+            Container(
+              //height: MediaQuery.of(context).size.height*0.60,
+              //width: MediaQuery.of(context).size.width*0.87,
+              child: Column(
+                children:<Widget>[
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> crscalci()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: Row(
+                          children: [
+                            FlatButton.icon(onPressed: null, icon:Icon( Icons.assignment,color: Colors.indigo.shade300,size: 30,), label: Text(""),),
+                            Text("My Score",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
+                          ],
+                        )  ,
+                      ),
+                    ),
+
+                  ),
+
+                  // InkWell(
+                  //  onTap: (){
+                  //   Navigator.push(context, MaterialPageRoute(builder: (context)=> crscalci()));
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      child: Row(
+                        children: [
+                          FlatButton.icon(onPressed: null, icon:Icon( Icons.folder_open,color: Colors.indigo.shade300,size: 30,), label: Text(""),),
+                          Text("My Recommendation",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
+                        ],
+                      )  ,
+                    ),
+                  ),
+                  //    },
+                  //  ),
+
+                  // InkWell(
+                  //   onTap: (){
+                  //     Navigator.push(context, MaterialPageRoute(builder: (context)=> crscalci()));
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      child: Row(
+                        children: [
+                          FlatButton.icon(onPressed: null, icon:Icon( Icons.share,color: Colors.indigo.shade300,size: 30,), label: Text(""),),
+                          Text("Share",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
+                        ],
+                      )  ,
+                    ),
+                  ),
+                  //  },
+                  // ),
+
+                  InkWell(
+                    onTap: () {
+                      //Navigator.push(context,
+                      // MaterialPageRoute(builder: (context) => crscalci()));
+                      // void logoutUser(){
+                      //   SharedPreferences prefs = await SharedPreferences.getInstance();
+                      //   prefs?.clear()
+                      //   Navigator.pushAndRemoveUntil(
+                      //       context,
+                      //       ModalRoute.withName("signup"),
+                      //       ModalRoute.withName("/Home")
+                      //   );
+                      // }
+
+                      Future<void> _signOut() async {
+                        await _firebaseAuth.signOut();
+                      }
+
+                      _signOut();
+                      setUserLoggedOut();
+                      Fluttertoast.showToast(
+                          msg: "Logout Successfull",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          //  timeInSecForIos: 1,
+                          textColor: Colors.blueAccent,
+                          fontSize: 15.0);
+                        dispose();
+                      Navigator.pushAndRemoveUntil<dynamic>(context, MaterialPageRoute(builder: (context) =>
+                          MyLoginPage()), (route) => false);
+
+
+
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        child: Row(
+                          children: [
+                            FlatButton.icon(onPressed: null, icon:Icon( Icons.exit_to_app,color: Colors.indigo.shade300,size: 30,), label: Text(""),),
+                            Text("Logout",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
+                          ],
+                        )  ,
+                      ),
+                    ),
+
+                  ),
+
+                ],
+              ),
+            ),
+
+
+
+
           ],
         ),
-    );
+
+      );
+    }
+
+  }
+  void setUserLoggedOut() async
+  {
+    Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    prefs.setInt("LoginInfo", 0);
   }
 }
 
@@ -795,39 +1329,8 @@ class _calculationsState extends State<calculations> {
           )
         ],
       ),
-    ),
-        bottomNavigationBar:
-        BottomNavigationBar(
-        onTap: (_index){
-          setState(() {
-        if (_index ==0){
-          Homeselected = true;
-          Ebookselected = false;
-          settingsselected =false;
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> CigApp()));
-        }
-        else if(_index ==1){
-          Ebookselected =true;
-          Homeselected =false;
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> books()));
-        }
-        else if(_index ==2){
-          settingsselected =true;
-          Homeselected =false;
-          Ebookselected =false;
-          Navigator.push(context, MaterialPageRoute(builder: (context)=> setting()));
-        }
-      });
-    },
-    currentIndex: _index=0,
-    type: BottomNavigationBarType.fixed,
-    selectedItemColor: Colors.deepOrangeAccent.shade200,
-    items: [
-    BottomNavigationBarItem(icon: Icon(Icons.home,),title: Text("Home")),
-    BottomNavigationBarItem(icon: Icon(Icons.library_books,),title: Text("E-Book")),
-    BottomNavigationBarItem(icon: Icon(Icons.settings,),title: Text("Settings")),
-    ],
-    ),
+    )
+
     );
   }
 }
@@ -2427,38 +2930,6 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
 
           ],
         ),
-      ),
-      bottomNavigationBar:
-      BottomNavigationBar(
-        onTap: (_index){
-          setState(() {
-            if (_index ==0){
-              Homeselected = true;
-              Ebookselected = false;
-              settingsselected =false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> CigApp()));
-            }
-            else if(_index ==1){
-              Ebookselected =true;
-              Homeselected =false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> books()));
-            }
-            else if(_index ==2){
-              settingsselected =true;
-              Homeselected =false;
-              Ebookselected =false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> setting()));
-            }
-          });
-        },
-        currentIndex: _index =0,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.deepOrangeAccent.shade200,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home,),title: Text("Home")),
-          BottomNavigationBarItem(icon: Icon(Icons.library_books,),title: Text("E-Book")),
-          BottomNavigationBarItem(icon: Icon(Icons.settings,),title: Text("Settings")),
-        ],
       ),
     );
   }
