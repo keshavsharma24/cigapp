@@ -1174,22 +1174,22 @@ class _calculationsState extends State<calculations> {
                         borderRadius: BorderRadius.circular(15.0)),
                     child: Stack(
                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      alignment: Alignment.center,
                       children: <Widget>[
                         Positioned(
                           top:0,
                           left: 143,
                           //child: Center(
-                              child: Text(
+                              child:Center(
+                                  child:Text(
                             "\n STEP 1",
                             style: TextStyle(color: Color.fromRGBO(62,75,102,1), fontSize: 18),
                         //  )
-                      ),
+                      )),
                         ),
                         Positioned(
                           top: 45,
-                            left: 30,
-                            child: Padding(
-                          padding: const EdgeInsets.all(12.0),
+                            child: Center(
                           child: Text(
                             "Eligibility Calculator",
                             style: TextStyle(
@@ -1198,23 +1198,16 @@ class _calculationsState extends State<calculations> {
                         )),
                         Positioned(
                           top: 105,
-                            left:60,
-                            child: Text(
-                          "Are you Eligible to Apply",
-                          style: TextStyle(fontSize: 21,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
-                        )),
-
-                      Positioned(
-                          top: 130,
-                          left:95,
-                      child: Text(
-                        " for Canada PR?",
-                        style: TextStyle(fontSize: 21,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
-                      )),
+                            child: Center(
+                                child:Text(
+                          "Are you Eligible to Apply for Canada PR?",
+                          style: TextStyle(fontSize: 15,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
+                        ))),
                         // Center(
                         Positioned(
-                          top: 180,
-                          left:15,
+                            top: 180,
+                            left: 20,
+                            right:20,
                             //padding: const EdgeInsets.all(15.0),
                             child: Container(
                               height: MediaQuery.of(context).size.height*0.06,
@@ -1233,7 +1226,7 @@ class _calculationsState extends State<calculations> {
                                       child: Text("calculate Now".toUpperCase(),
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 25))),
+                                              fontSize: 15))),
                                 ),
                                 color: Colors.indigo.shade300,
                                 elevation: 5,
@@ -1258,43 +1251,38 @@ class _calculationsState extends State<calculations> {
                         borderRadius: BorderRadius.circular(15.0)),
                     child: Stack(
                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      alignment:Alignment.center,
                       children: <Widget>[
                         Positioned(
                           top:25,
                             left: 143,
-                            child: Text(
+                            child: Center(
+                                child:Text(
                           "STEP 2",
                           style: TextStyle(color: Color.fromRGBO(62,75,102,1), fontSize: 18),
-                        )),
+                        ))),
                         Positioned(
                             top: 55,
-                            left: 60,
-                            child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(
+                          child: Center(
+                            child:Text(
                             "CRS Calculator",
                             style: TextStyle(
                                 color: Colors.deepOrangeAccent, fontSize: 30),
-                          ),
-                        )),
+                        ))),
                         Positioned(
                             top: 115,
-                            left: 85,
-                            child: Text(
-                          "This score will get",
-                          style: TextStyle(fontSize: 21,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
-                        )),
-
-                        Positioned(
-                            top: 140,
-                            left: 115,
-                            child: Text(
-                              "you THE ITA",
-                              style: TextStyle(fontSize: 21,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
-                            )),
+                            left: 20,
+                            right:20,
+                            child: Center(
+                                child:Text(
+                          "This score will get you THE ITA",
+                          style: TextStyle(fontSize: 15,color: Color.fromRGBO(62,75,102,1),fontWeight: FontWeight.w600),
+                        )))
+                        ,
                         Positioned(
                           top: 180,
-                          left: 15,
+                          left: 20,
+                          right:20,
                           child: Container(
                            // padding: const EdgeInsets.all(15.0),
                             height: MediaQuery.of(context).size.height*0.06,
@@ -1313,7 +1301,7 @@ class _calculationsState extends State<calculations> {
                                     child: Text("calculate Now".toUpperCase(),
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 25))),
+                                            fontSize: 15))),
                               ),
                               color: Colors.indigo.shade300,
                               elevation: 5,
@@ -1341,8 +1329,18 @@ class eligiblitycalci extends StatefulWidget {
 
 }
 
-class _eligiblitycalciState extends State<eligiblitycalci> {
+class _eligiblitycalciState extends State<eligiblitycalci> with TickerProviderStateMixin   {
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    setState((){
+      adaptabilitycentervalue=_adaptability2();
+      adaptabilityvalue=_adaptability1();
+      languagepercentagevalue=_languagepercentagevalue();
+      accumulativelanguagescore1=_accumulativelanguagescore1();
+      totaleligibilityscore=_calculatiofinal();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1400,7 +1398,6 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 content: Stack(
-                                  overflow: Overflow.visible,
                                   children: <Widget>[
                                     Container(
                                       alignment: Alignment.center,
@@ -1445,7 +1442,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                       child: Text(
                                                         "Age: 18-35",
                                                         style:
-                                                        TextStyle(fontSize: 28),
+                                                        TextStyle(fontSize: 20),
                                                       )),
                                                 )),
                                           ),
@@ -1474,7 +1471,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 36",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1504,7 +1501,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 37",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1534,7 +1531,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 38",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1564,7 +1561,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 39",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1594,7 +1591,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 40",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1624,7 +1621,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 41",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize:20),
                                                     )),
                                               ),
                                             ),
@@ -1654,7 +1651,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 42",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1684,7 +1681,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 42",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1714,7 +1711,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 43",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1744,7 +1741,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 44",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1775,7 +1772,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                     child: Text(
                                                       "Age: 45",
                                                       style:
-                                                      TextStyle(fontSize: 27),
+                                                      TextStyle(fontSize: 20),
                                                     )),
                                               ),
                                             ),
@@ -1898,8 +1895,9 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                   child: Center(
                                                     child: Text(
                                                       "Doctoral level University degree (phd)",
+                                                      textAlign: TextAlign.center,
                                                       style: TextStyle(
-                                                          fontSize: 25),
+                                                          fontSize: 20),
                                                     ),
                                                   ),
                                                 ),
@@ -1934,8 +1932,9 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                   child: Center(
                                                     child: Text(
                                                       "Master Degree",
+                                                      textAlign: TextAlign.center,
                                                       style: TextStyle(
-                                                          fontSize: 25),
+                                                          fontSize: 20),
                                                     ),
                                                   ),
                                                 ),
@@ -1970,8 +1969,9 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                   child: Center(
                                                     child: Text(
                                                       "Two or More certificates, diplomas or degrees",
+                                                      textAlign: TextAlign.center,
                                                       style: TextStyle(
-                                                          fontSize: 25),
+                                                          fontSize: 20),
                                                     ),
                                                   ),
                                                 ),
@@ -2005,9 +2005,10 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                           7.0)),
                                                   child: Center(
                                                     child: Text(
-                                                      "Bachelor degree or diploma for a \nprogram of three year",
+                                                      "Bachelor degree or diploma for a program of three year",
+                                                      textAlign: TextAlign.center,
                                                       style: TextStyle(
-                                                          fontSize: 25),
+                                                          fontSize: 20),
                                                     ),
                                                   ),
                                                 ),
@@ -2042,8 +2043,9 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                   child: Center(
                                                     child: Text(
                                                       "Two year program at university, college",
+                                                      textAlign: TextAlign.center,
                                                       style: TextStyle(
-                                                          fontSize: 25),
+                                                          fontSize: 20),
                                                     ),
                                                   ),
                                                 ),
@@ -2078,8 +2080,9 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                   child: Center(
                                                     child: Text(
                                                       "One Year Program at a University, college",
+                                                      textAlign: TextAlign.center,
                                                       style: TextStyle(
-                                                          fontSize: 25),
+                                                          fontSize: 20),
                                                     ),
                                                   ),
                                                 ),
@@ -2111,8 +2114,9 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                                 child: Center(
                                                   child: Text(
                                                     "Secondary diploma(high school graduation)",
+                                                    textAlign: TextAlign.center,
                                                     style:
-                                                    TextStyle(fontSize: 25),
+                                                    TextStyle(fontSize: 20),
                                                   ),
                                                 ),
                                               ),
@@ -2236,9 +2240,10 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   )),
                               // ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(4),
                                 child: Text(
                                   "Language \n Proficiency",
+                                    textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,color: Colorscheme.text_blue),
@@ -2525,9 +2530,10 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                   )),
                               // ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(4.0),
                                 child: Text(
                                   "Work \nExperience",
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
@@ -2698,9 +2704,10 @@ class _eligiblitycalciState extends State<eligiblitycalci> {
                                     )),
                                 // ),
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(4.0),
                                   child: Text(
                                     "Arranged \nEmployment",
+                                      textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,
@@ -3320,11 +3327,7 @@ class _adaptabilityclassState extends State<adaptabilityclass> {
                                             padding: const EdgeInsets.all(15.0),
                                             child: MaterialButton(
                                               onPressed: () => {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            eligiblitycalci()))
+                                               Navigator.pop(context)
                                               },
                                               child: Padding(
                                                 padding: const EdgeInsets.all(10.0),
@@ -3655,9 +3658,9 @@ class _Languagetest1State extends State<Languagetest1> {
             InkWell(
               onTap: ()
 
-              {   if(checkedvalue1 == true || checkvalue1 == true && navalue1 == true || tcfvalue1 == true || tefvalue1 == true){
-
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+              {   if(checkedvalue1 == true || checkvalue1 == true && navalue1 == true || tcfvalue1 == true || tefvalue1 == true) {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) =>
                     languagescore1()));
               }
                  else if(checkedvalue1 == true || checkvalue1 == true && navalue1 == false || tcfvalue1 == false || tefvalue1 == false)
@@ -3852,11 +3855,7 @@ class _languagescore1State extends State<languagescore1> {
                             padding: const EdgeInsets.all(15.0),
                             child: MaterialButton(
                               onPressed: () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            eligiblitycalci()))
+                                Navigator.pop(context)
                               },
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
@@ -4039,12 +4038,8 @@ class _languagescore1State extends State<languagescore1> {
                             padding: const EdgeInsets.all(15.0),
                             child: MaterialButton(
                               onPressed: () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            eligiblitycalci()))
-                              },
+                                Navigator.pop(context)
+                                },
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Center(

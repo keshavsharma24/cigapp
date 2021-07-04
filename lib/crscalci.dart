@@ -1395,7 +1395,7 @@ void didChangeAppLifecycleState(AppLifecycleState state) {
                                           // ),
                                         ),
                                         Container(
-                                            height: 50,
+                                            height: 70,
                                            // width:180,
                                             //color: Colors.green,
                                             // child:Card(
@@ -1406,7 +1406,7 @@ void didChangeAppLifecycleState(AppLifecycleState state) {
                                             children:<Widget>[
                                              //Padding(
                                               //padding: const EdgeInsets.only(top:10.0),
-                                               Text("Work \nExperience",style: TextStyle(fontSize: 20),),
+                                               Text("Work Experience",style: TextStyle(fontSize: 20),),
                                                Text("$totalworkexprience",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
                                            // )
                                                  ],
