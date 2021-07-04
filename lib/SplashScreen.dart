@@ -33,13 +33,13 @@ class _SplashScreen extends State<SplashScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
             children:[
-              Text("Canada Immigration",
+              Text("Canada Immigration Guide",
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.deepOrangeAccent.shade200,fontWeight: FontWeight.w900,fontSize:50,fontFamily: 'DavidLibre'),
+                style: TextStyle(color: Colors.deepOrangeAccent.shade200,fontWeight: FontWeight.w900,fontSize:30,fontFamily: 'DancingScript'),
               ),
-              Text("Your Way to Canada",
+              Text("Catch Your Dreams",
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.deepOrangeAccent.shade200,fontWeight: FontWeight.w900,fontSize:20,fontFamily: 'DavidLibre'),
+                style: TextStyle(color: Colors.deepOrangeAccent.shade200,fontWeight: FontWeight.w900,fontSize:20,fontFamily: 'DancingScript'),
               ),
             ],
 

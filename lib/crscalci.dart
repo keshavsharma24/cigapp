@@ -175,1202 +175,1126 @@ void didChangeAppLifecycleState(AppLifecycleState state) {
               //   left: 0,
               //   right: 0,
     //            child:
-                Container(
-                  height: MediaQuery.of(context).size.height*0.75,
-                 // width: 350,
-                  width: MediaQuery.of(context).size.width,
-                 // color: Colors.black45,
-                //  alignment: Alignment.center,
-                //  color: Colors.amber,
-                  child:ListView(
-                    scrollDirection: Axis.vertical,
-                   // scrollDirection: Axis.horizontal,
-                    children:<Widget>[
-                      Column(
-                        children:<Widget>[
-                          // ListView(
-                          //   scrollDirection: Axis.vertical,
-                          //   children:<Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children:<Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left:10.0,right:10.0),
-                            child: Container(
-                              height: 200,
-                             // width: 190,
-                              width: MediaQuery.of(context).size.width*0.46,
-                              //color: Colors.black,
-                              child:Card(
-                                elevation: 10,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                              child: Column(
-                                children:<Widget>[
-                                  Container(
-                                    height: 120,
-                                    // child:Card(
-                                    //     elevation: 10,
-                                    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                    // child: Container(
-                                    margin: EdgeInsets.only(
-                                        top: 10, bottom: 10, left: 20, right: 20),
-                                    //  color: Colors.transparent,
-                                    decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.black45)),
-                                      color: Colors.transparent,
-                                      image: new DecorationImage(
-                                          image: AssetImage("images/wedding-ring.png")),
+                Expanded(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height*0.8,
+                   // width: 350,
+                    width: MediaQuery.of(context).size.width,
+                   // color: Colors.black45,
+                  //  alignment: Alignment.center,
+                  //  color: Colors.amber,
+                    child:ListView(
+                      scrollDirection: Axis.vertical,
+                     // scrollDirection: Axis.horizontal,
+                      children:<Widget>[
+                        Column(
+                          children:<Widget>[
+                            // ListView(
+                            //   scrollDirection: Axis.vertical,
+                            //   children:<Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children:<Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left:10.0,right:10.0),
+                              child: Container(
+                                height: 200,
+                               // width: 190,
+                                width: MediaQuery.of(context).size.width*0.46,
+                                //color: Colors.black,
+                                child:Card(
+                                  elevation: 10,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                child: Column(
+                                  children:<Widget>[
+                                    Container(
+                                      height: 120,
+                                      // child:Card(
+                                      //     elevation: 10,
+                                      //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                      // child: Container(
+                                      margin: EdgeInsets.only(
+                                          top: 10, bottom: 10, left: 20, right: 20),
+                                      //  color: Colors.transparent,
+                                      decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.black45)),
+                                        color: Colors.transparent,
+                                        image: new DecorationImage(
+                                            image: AssetImage("images/wedding-ring.png")),
+                                      ),
+                                  //    ),
+                             // ),
                                     ),
-                                //    ),
-                           // ),
-                                  ),
-                                  Container(
-                                    height: 50,
-                                    //width:180,
-                                      width: MediaQuery.of(context).size.width*0.46,
-                                    //color: Colors.green,
-                                     // child:Card(
-                                     // elevation: 10,
-                                         // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top:10.0,left: 15),
-                                    child: Text("Marital Status",style: TextStyle(fontSize: 20),),
-                                  )
-                                 // ),
-                                  ),
-                                ],
-                              ),
+                                    Container(
+                                      height: 50,
+                                      //width:180,
+                                        width: MediaQuery.of(context).size.width*0.46,
+                                      //color: Colors.green,
+                                       // child:Card(
+                                       // elevation: 10,
+                                           // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top:10.0,left: 15),
+                                      child: Text("Marital Status",style: TextStyle(fontSize: 20),),
+                                    )
+                                   // ),
+                                    ),
+                                  ],
+                                ),
+                                ),
                               ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      content: Stack(
-                                        overflow: Overflow.visible,
-                                        children: <Widget>[
-                                          Container(
-                                            alignment: Alignment.center,
-                                            height: MediaQuery.of(context).size.height*0.75,
-                                            //width: 300,
-                                            width: MediaQuery.of(context).size.width*0.75,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage("images/cig_background_new.jpg"),
-                                                    fit: BoxFit.cover
-                                                )
-                                            ),
-                                           // color: Colors.black45,
-                                            child:ListView(
-                                              scrollDirection: Axis.vertical,
-                                              children:<Widget>[
-                                            Column(
-                                              children: <Widget>[
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      agescore = 110;
-                                                      totalscore = _score();
-                                                   //   agecentervalue = "12";
-                                                   //   totaleligibilityscore = _calculatiofinal();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        content: Stack(
+                                          overflow: Overflow.visible,
+                                          children: <Widget>[
+                                            Container(
+                                              alignment: Alignment.center,
+                                              height: MediaQuery.of(context).size.height*0.75,
+                                              //width: 300,
+                                              width: MediaQuery.of(context).size.width*0.75,
+                                              decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      image: AssetImage("images/cig_background_new.jpg"),
+                                                      fit: BoxFit.cover
+                                                  )
+                                              ),
+                                             // color: Colors.black45,
+                                              child:ListView(
+                                                scrollDirection: Axis.vertical,
+                                                children:<Widget>[
+                                              Column(
+                                                children: <Widget>[
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        agescore = 110;
+                                                        totalscore = _score();
+                                                     //   agecentervalue = "12";
+                                                     //   totaleligibilityscore = _calculatiofinal();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                        height: 45,
+                                                        width: 350,
+                                                        //color: Colors.pinkAccent.shade100,
+
+                                                        child: Card(
+                                                          elevation: 5,
+                                                          margin: EdgeInsets.only(
+                                                              top: 3.0, bottom: 3.0),
+                                                          color: Colors
+                                                              .greenAccent.shade100,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                              BorderRadius.circular(
+                                                                  7.0)),
+                                                          child: Center(
+                                                              child: Text(
+                                                                "Age: 18-35",
+                                                                style:
+                                                                TextStyle(fontSize: 28),
+                                                              )),
+                                                        )),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.9;
+                                                        // agecentervalue = "11";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 105;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
                                                       height: 45,
                                                       width: 350,
-                                                      //color: Colors.pinkAccent.shade100,
-
                                                       child: Card(
-                                                        elevation: 5,
-                                                        margin: EdgeInsets.only(
-                                                            top: 3.0, bottom: 3.0),
-                                                        color: Colors
-                                                            .greenAccent.shade100,
+                                                        color:
+                                                        Colors.greenAccent.shade100,
                                                         shape: RoundedRectangleBorder(
                                                             borderRadius:
                                                             BorderRadius.circular(
                                                                 7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
                                                         child: Center(
                                                             child: Text(
-                                                              "Age: 18-35",
+                                                              "Age: 36",
                                                               style:
-                                                              TextStyle(fontSize: 28),
+                                                              TextStyle(fontSize: 27),
                                                             )),
-                                                      )),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.9;
-                                                      // agecentervalue = "11";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 105;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 36",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.8;
-                                                      // agecentervalue = "10";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 99;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 37",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.8;
+                                                        // agecentervalue = "10";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 99;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 37",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.7;
-                                                      // agecentervalue = "9";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 94;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 38",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.7;
+                                                        // agecentervalue = "9";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 94;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 38",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.6;
-                                                      // agecentervalue = "8";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 88;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 39",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.6;
+                                                        // agecentervalue = "8";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 88;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 39",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.5;
-                                                      // agecentervalue = "7";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 83;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 40",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.5;
+                                                        // agecentervalue = "7";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 83;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 40",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.4;
-                                                      // agecentervalue = "6";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 77;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 41",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.4;
+                                                        // agecentervalue = "6";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 77;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 41",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.3;
-                                                      // agecentervalue = "5";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 72;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 42",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.3;
+                                                        // agecentervalue = "5";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 72;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 42",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.35;
-                                                      // agecentervalue = "4";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 66;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 42",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.35;
+                                                        // agecentervalue = "4";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 66;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 42",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.3;
-                                                      // agecentervalue = "3";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 61;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 43",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.3;
+                                                        // agecentervalue = "3";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 61;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 43",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.2;
-                                                      // agecentervalue = "2";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 55;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 44",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.2;
+                                                        // agecentervalue = "2";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 55;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 44",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.1;
-                                                      // agecentervalue = "1";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 50;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 45",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.1;
+                                                        // agecentervalue = "1";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 50;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 45",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.1;
-                                                      // agecentervalue = "1";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 39;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 46",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.1;
+                                                        // agecentervalue = "1";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 39;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 46",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.1;
-                                                      // agecentervalue = "1";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 28;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 47",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.1;
+                                                        // agecentervalue = "1";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 28;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 47",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.1;
-                                                      // agecentervalue = "1";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 17;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 48",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.1;
+                                                        // agecentervalue = "1";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 17;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 48",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.1;
-                                                      // agecentervalue = "1";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 6;
-                                                      totalscore = _score();
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 49",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.1;
+                                                        // agecentervalue = "1";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 6;
+                                                        totalscore = _score();
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 49",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    setState(() {
-                                                      // agevalue = 0.1;
-                                                      // agecentervalue = "1";
-                                                      // totaleligibilityscore = _calculatiofinal();
-                                                      agescore = 0;
-                                                    });
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: Container(
-                                                    height: 45,
-                                                    width: 350,
-                                                    child: Card(
-                                                      color:
-                                                      Colors.greenAccent.shade100,
-                                                      shape: RoundedRectangleBorder(
-                                                          borderRadius:
-                                                          BorderRadius.circular(
-                                                              7.0)),
-                                                      elevation: 5,
-                                                      margin: EdgeInsets.all(3),
-                                                      child: Center(
-                                                          child: Text(
-                                                            "Age: 50",
-                                                            style:
-                                                            TextStyle(fontSize: 27),
-                                                          )),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        // agevalue = 0.1;
+                                                        // agecentervalue = "1";
+                                                        // totaleligibilityscore = _calculatiofinal();
+                                                        agescore = 0;
+                                                      });
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Container(
+                                                      height: 45,
+                                                      width: 350,
+                                                      child: Card(
+                                                        color:
+                                                        Colors.greenAccent.shade100,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                            BorderRadius.circular(
+                                                                7.0)),
+                                                        elevation: 5,
+                                                        margin: EdgeInsets.all(3),
+                                                        child: Center(
+                                                            child: Text(
+                                                              "Age: 50",
+                                                              style:
+                                                              TextStyle(fontSize: 27),
+                                                            )),
+                                                      ),
                                                     ),
-                                                  ),
 
-                                                ),
-                                              ],
-                                                ),
+                                                  ),
+                                                ],
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    });
+                              },
+                            child: Container(
+                              height: 200,
+                             // width: 190,
+                              width: MediaQuery.of(context).size.width*0.46,
+                              //color:Colors.green,
+
+                              child:Card(
+                                elevation: 10,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                child: Column(
+                                  children:<Widget>[
+                                    Container(
+                                      height: 120,
+                                      // child:Card(
+                                      //     elevation: 10,
+                                      //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                      // child: Container(
+                                      margin: EdgeInsets.only(
+                                          top: 10, bottom: 10, left: 20, right: 20),
+                                      //  color: Colors.transparent,
+                                      decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: Colors.black45)),
+                                        color: Colors.transparent,
+                                        image: new DecorationImage(
+                                            image: AssetImage("images/birthday-cake.png")),
+                                      ),
+                                      //    ),
+                                      // ),
+                                    ),
+
+                                    Container(
+                                        height: 50,
+                                        width: MediaQuery.of(context).size.width*0.46,
+                                       // width:180,
+                                        //color: Colors.green,
+                                        // child:Card(
+                                        // elevation: 10,
+                                        // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          children:<Widget>[
+                                        //Padding(
+                                        //  padding: const EdgeInsets.only(top:10.0),
+                                            Text("Age",style: TextStyle(fontSize: 20),),
+                                       // ),
+                                            Text("$agescore",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+                                  ],
+                            ),
+                                      // ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+
+                             // color: Colors.green,
+                            ),
+                            ),
+                          ],
+                    ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children:<Widget>[
+                                InkWell(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            content: Stack(
+                                              overflow: Overflow.visible,
+                                              children: <Widget>[
+                                                Container(
+                                                  alignment: Alignment.center,
+                                                  width: 300,
+                                                  height: MediaQuery.of(context).size.height*0.65,
+                                                  decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                          image: AssetImage("images/cig_background_new.jpg"),
+                                                          fit: BoxFit.cover
+                                                      )
+                                                  ),
+                                                  child:ListView(
+                                                    scrollDirection: Axis.vertical,
+                                                    children:<Widget>[
+                                                  Column(
+                                                    children: <Widget>[
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            // educationvalue = 1.0;
+                                                            // educationcentervalue = "25";
+                                                            // totaleligibilityscore = _calculatiofinal();
+                                                            eduscore =150;
+                                                            totalscore = _score();
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Padding(
+                                                          padding:
+                                                          const EdgeInsets.all(8.0),
+                                                          child: Container(
+                                                            height: 65,
+                                                            width: 350,
+                                                            child: Card(
+                                                              elevation: 5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: 3.0, bottom: 3.0),
+                                                              color: Colors
+                                                                  .greenAccent.shade100,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      7.0)),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Doctoral level University degree (phd)",
+                                                                  style: TextStyle(
+                                                                      fontSize: 25),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            // educationvalue = 0.9;
+                                                            // educationcentervalue = "23";
+                                                            // totaleligibilityscore = _calculatiofinal();
+                                                            eduscore =135;
+                                                            totalscore = _score();
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Padding(
+                                                          padding:
+                                                          const EdgeInsets.all(8.0),
+                                                          child: Container(
+                                                            height: 65,
+                                                            width: 350,
+                                                            child: Card(
+                                                              elevation: 5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: 3.0, bottom: 3.0),
+                                                              color: Colors
+                                                                  .greenAccent.shade100,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      7.0)),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Master Degree",
+                                                                  style: TextStyle(
+                                                                      fontSize: 25),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            // educationvalue = 0.8;
+                                                            // educationcentervalue = "22";
+                                                            // totaleligibilityscore = _calculatiofinal();
+                                                            eduscore =128;
+                                                            totalscore = _score();
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Padding(
+                                                          padding:
+                                                          const EdgeInsets.all(8.0),
+                                                          child: Container(
+                                                            height: 65,
+                                                            width: 350,
+                                                            child: Card(
+                                                              elevation: 5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: 3.0, bottom: 3.0),
+                                                              color: Colors
+                                                                  .greenAccent.shade100,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      7.0)),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Two or More certificates, diplomas or degrees",
+                                                                  style: TextStyle(
+                                                                      fontSize: 25),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            // educationvalue = 0.7;
+                                                            // educationcentervalue = "21";
+                                                            // totaleligibilityscore = _calculatiofinal();
+                                                            eduscore =120;
+                                                            totalscore = _score();
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Padding(
+                                                          padding:
+                                                          const EdgeInsets.all(8.0),
+                                                          child: Container(
+                                                            height: 65,
+                                                            width: 350,
+                                                            child: Card(
+                                                              elevation: 5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: 3.0, bottom: 3.0),
+                                                              color: Colors
+                                                                  .greenAccent.shade100,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      7.0)),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Bachelor degree or diploma for a \nprogram of three year",
+                                                                  style: TextStyle(
+                                                                      fontSize: 25),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            // educationvalue = 0.6;
+                                                            // educationcentervalue = "19";
+                                                            // totaleligibilityscore = _calculatiofinal();
+                                                            eduscore =98;
+                                                            totalscore = _score();
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Padding(
+                                                          padding:
+                                                          const EdgeInsets.all(8.0),
+                                                          child: Container(
+                                                            height: 65,
+                                                            width: 350,
+                                                            child: Card(
+                                                              elevation: 5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: 3.0, bottom: 3.0),
+                                                              color: Colors
+                                                                  .greenAccent.shade100,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      7.0)),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Two year program at university, college",
+                                                                  style: TextStyle(
+                                                                      fontSize: 25),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            // educationvalue = 0.5;
+                                                            // educationcentervalue = "15";
+                                                            // totaleligibilityscore = _calculatiofinal();
+                                                            eduscore =90;
+                                                            totalscore = _score();
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Padding(
+                                                          padding:
+                                                          const EdgeInsets.all(8.0),
+                                                          child: Container(
+                                                            height: 65,
+                                                            width: 350,
+                                                            child: Card(
+                                                              elevation: 5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: 3.0, bottom: 3.0),
+                                                              color: Colors
+                                                                  .greenAccent.shade100,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      7.0)),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "One Year Program at a University, college",
+                                                                  style: TextStyle(
+                                                                      fontSize: 25),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            // educationvalue = 0.2;
+                                                            // educationcentervalue = "5";
+                                                            // totaleligibilityscore = _calculatiofinal();
+                                                            eduscore =30;
+                                                            totalscore = _score();
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: Container(
+                                                            height: 65,
+                                                            width: 350,
+                                                            child: Card(
+                                                              elevation: 5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: 3.0, bottom: 3.0),
+                                                              color:
+                                                              Colors.greenAccent.shade100,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      7.0)),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Secondary diploma(high school graduation)",
+                                                                  style:
+                                                                  TextStyle(fontSize: 25),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            // educationvalue = 0.2;
+                                                            // educationcentervalue = "5";
+                                                            // totaleligibilityscore = _calculatiofinal();
+                                                            eduscore =0;
+                                                            totalscore = _score();
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: Container(
+                                                            height: 65,
+                                                            width: 350,
+                                                            child: Card(
+                                                              elevation: 5,
+                                                              margin: EdgeInsets.only(
+                                                                  top: 3.0, bottom: 3.0),
+                                                              color:
+                                                              Colors.greenAccent.shade100,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                  BorderRadius.circular(
+                                                                      7.0)),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "None or less then Secondary (High school)",
+                                                                  style:
+                                                                  TextStyle(fontSize: 25),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                    ],
+                                                  ),
+                                                )
+
                                               ],
                                             ),
-                                          )
+                                          );
+                                        });
+                                  },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left:10.0,right:10.0),
+                                  child: Container(
+                                    height: 200,
+                                   // width: 190,
+                                    width: MediaQuery.of(context).size.width*0.46,
+                                   // color: Colors.black45,
+                                    child:Card(
+                                      elevation: 10,
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                      child: Column(
+                                        children:<Widget>[
+                                          Container(
+                                            height: 120,
+                                            // child:Card(
+                                            //     elevation: 10,
+                                            //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                            // child: Container(
+                                            margin: EdgeInsets.only(
+                                                top: 10, bottom: 10, left: 20, right: 20),
+                                            //  color: Colors.transparent,
+                                            decoration: BoxDecoration(
+                                              border: Border(bottom: BorderSide(color: Colors.black45)),
+                                              color: Colors.transparent,
+                                              image: new DecorationImage(
+                                                  image: AssetImage("images/books.png")),
+                                            ),
+                                            //    ),
+                                            // ),
+                                          ),
+                                          Container(
+                                              height: 50,
+                                             // width:180,
+                                              //color: Colors.green,
+                                              // child:Card(
+                                              // elevation: 10,
+                                              // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                              child:Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                children:<Widget>[
+                                             // Padding(
+                                             //   padding: const EdgeInsets.only(top:10.0),
+                                                 Text("Education",style: TextStyle(fontSize: 20),),
+                                             // ),
+                                                  Text("$eduscore",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            // ),
+                                          ),
                                         ],
                                       ),
-                                    );
-                                  });
-                            },
-                          child: Container(
-                            height: 200,
-                           // width: 190,
-                            width: MediaQuery.of(context).size.width*0.46,
-                            //color:Colors.green,
-
-                            child:Card(
-                              elevation: 10,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                              child: Column(
-                                children:<Widget>[
-                                  Container(
-                                    height: 120,
-                                    // child:Card(
-                                    //     elevation: 10,
-                                    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                    // child: Container(
-                                    margin: EdgeInsets.only(
-                                        top: 10, bottom: 10, left: 20, right: 20),
-                                    //  color: Colors.transparent,
-                                    decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: Colors.black45)),
-                                      color: Colors.transparent,
-                                      image: new DecorationImage(
-                                          image: AssetImage("images/birthday-cake.png")),
-                                    ),
-                                    //    ),
-                                    // ),
-                                  ),
-
-                                  Container(
-                                      height: 50,
-                                      width: MediaQuery.of(context).size.width*0.46,
-                                     // width:180,
-                                      //color: Colors.green,
-                                      // child:Card(
-                                      // elevation: 10,
-                                      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children:<Widget>[
-                                      //Padding(
-                                      //  padding: const EdgeInsets.only(top:10.0),
-                                          Text("Age",style: TextStyle(fontSize: 20),),
-                                     // ),
-                                          Text("$agescore",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                                ],
-                          ),
-                                    // ),
-                                  ),
-                                ],
-                              ),
-                            ),
-
-
-                           // color: Colors.green,
-                          ),
-                          ),
-                        ],
-                  ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children:<Widget>[
-                              InkWell(
-                                onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          content: Stack(
-                                            overflow: Overflow.visible,
-                                            children: <Widget>[
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 300,
-                                                height: MediaQuery.of(context).size.height*0.65,
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                        image: AssetImage("images/cig_background_new.jpg"),
-                                                        fit: BoxFit.cover
-                                                    )
-                                                ),
-                                                child:ListView(
-                                                  scrollDirection: Axis.vertical,
-                                                  children:<Widget>[
-                                                Column(
-                                                  children: <Widget>[
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          // educationvalue = 1.0;
-                                                          // educationcentervalue = "25";
-                                                          // totaleligibilityscore = _calculatiofinal();
-                                                          eduscore =150;
-                                                          totalscore = _score();
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Padding(
-                                                        padding:
-                                                        const EdgeInsets.all(8.0),
-                                                        child: Container(
-                                                          height: 65,
-                                                          width: 350,
-                                                          child: Card(
-                                                            elevation: 5,
-                                                            margin: EdgeInsets.only(
-                                                                top: 3.0, bottom: 3.0),
-                                                            color: Colors
-                                                                .greenAccent.shade100,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                BorderRadius.circular(
-                                                                    7.0)),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "Doctoral level University degree (phd)",
-                                                                style: TextStyle(
-                                                                    fontSize: 25),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          // educationvalue = 0.9;
-                                                          // educationcentervalue = "23";
-                                                          // totaleligibilityscore = _calculatiofinal();
-                                                          eduscore =135;
-                                                          totalscore = _score();
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Padding(
-                                                        padding:
-                                                        const EdgeInsets.all(8.0),
-                                                        child: Container(
-                                                          height: 65,
-                                                          width: 350,
-                                                          child: Card(
-                                                            elevation: 5,
-                                                            margin: EdgeInsets.only(
-                                                                top: 3.0, bottom: 3.0),
-                                                            color: Colors
-                                                                .greenAccent.shade100,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                BorderRadius.circular(
-                                                                    7.0)),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "Master Degree",
-                                                                style: TextStyle(
-                                                                    fontSize: 25),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          // educationvalue = 0.8;
-                                                          // educationcentervalue = "22";
-                                                          // totaleligibilityscore = _calculatiofinal();
-                                                          eduscore =128;
-                                                          totalscore = _score();
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Padding(
-                                                        padding:
-                                                        const EdgeInsets.all(8.0),
-                                                        child: Container(
-                                                          height: 65,
-                                                          width: 350,
-                                                          child: Card(
-                                                            elevation: 5,
-                                                            margin: EdgeInsets.only(
-                                                                top: 3.0, bottom: 3.0),
-                                                            color: Colors
-                                                                .greenAccent.shade100,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                BorderRadius.circular(
-                                                                    7.0)),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "Two or More certificates, diplomas or degrees",
-                                                                style: TextStyle(
-                                                                    fontSize: 25),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          // educationvalue = 0.7;
-                                                          // educationcentervalue = "21";
-                                                          // totaleligibilityscore = _calculatiofinal();
-                                                          eduscore =120;
-                                                          totalscore = _score();
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Padding(
-                                                        padding:
-                                                        const EdgeInsets.all(8.0),
-                                                        child: Container(
-                                                          height: 65,
-                                                          width: 350,
-                                                          child: Card(
-                                                            elevation: 5,
-                                                            margin: EdgeInsets.only(
-                                                                top: 3.0, bottom: 3.0),
-                                                            color: Colors
-                                                                .greenAccent.shade100,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                BorderRadius.circular(
-                                                                    7.0)),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "Bachelor degree or diploma for a \nprogram of three year",
-                                                                style: TextStyle(
-                                                                    fontSize: 25),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          // educationvalue = 0.6;
-                                                          // educationcentervalue = "19";
-                                                          // totaleligibilityscore = _calculatiofinal();
-                                                          eduscore =98;
-                                                          totalscore = _score();
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Padding(
-                                                        padding:
-                                                        const EdgeInsets.all(8.0),
-                                                        child: Container(
-                                                          height: 65,
-                                                          width: 350,
-                                                          child: Card(
-                                                            elevation: 5,
-                                                            margin: EdgeInsets.only(
-                                                                top: 3.0, bottom: 3.0),
-                                                            color: Colors
-                                                                .greenAccent.shade100,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                BorderRadius.circular(
-                                                                    7.0)),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "Two year program at university, college",
-                                                                style: TextStyle(
-                                                                    fontSize: 25),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          // educationvalue = 0.5;
-                                                          // educationcentervalue = "15";
-                                                          // totaleligibilityscore = _calculatiofinal();
-                                                          eduscore =90;
-                                                          totalscore = _score();
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Padding(
-                                                        padding:
-                                                        const EdgeInsets.all(8.0),
-                                                        child: Container(
-                                                          height: 65,
-                                                          width: 350,
-                                                          child: Card(
-                                                            elevation: 5,
-                                                            margin: EdgeInsets.only(
-                                                                top: 3.0, bottom: 3.0),
-                                                            color: Colors
-                                                                .greenAccent.shade100,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                BorderRadius.circular(
-                                                                    7.0)),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "One Year Program at a University, college",
-                                                                style: TextStyle(
-                                                                    fontSize: 25),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          // educationvalue = 0.2;
-                                                          // educationcentervalue = "5";
-                                                          // totaleligibilityscore = _calculatiofinal();
-                                                          eduscore =30;
-                                                          totalscore = _score();
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(8.0),
-                                                        child: Container(
-                                                          height: 65,
-                                                          width: 350,
-                                                          child: Card(
-                                                            elevation: 5,
-                                                            margin: EdgeInsets.only(
-                                                                top: 3.0, bottom: 3.0),
-                                                            color:
-                                                            Colors.greenAccent.shade100,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                BorderRadius.circular(
-                                                                    7.0)),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "Secondary diploma(high school graduation)",
-                                                                style:
-                                                                TextStyle(fontSize: 25),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        setState(() {
-                                                          // educationvalue = 0.2;
-                                                          // educationcentervalue = "5";
-                                                          // totaleligibilityscore = _calculatiofinal();
-                                                          eduscore =0;
-                                                          totalscore = _score();
-                                                        });
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(8.0),
-                                                        child: Container(
-                                                          height: 65,
-                                                          width: 350,
-                                                          child: Card(
-                                                            elevation: 5,
-                                                            margin: EdgeInsets.only(
-                                                                top: 3.0, bottom: 3.0),
-                                                            color:
-                                                            Colors.greenAccent.shade100,
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                BorderRadius.circular(
-                                                                    7.0)),
-                                                            child: Center(
-                                                              child: Text(
-                                                                "None or less then Secondary (High school)",
-                                                                style:
-                                                                TextStyle(fontSize: 25),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                  ],
-                                                ),
-                                              )
-
-                                            ],
-                                          ),
-                                        );
-                                      });
-                                },
-                              child: Padding(
-                                padding: const EdgeInsets.only(left:10.0,right:10.0),
-                                child: Container(
-                                  height: 200,
-                                 // width: 190,
-                                  width: MediaQuery.of(context).size.width*0.46,
-                                 // color: Colors.black45,
-                                  child:Card(
-                                    elevation: 10,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                    child: Column(
-                                      children:<Widget>[
-                                        Container(
-                                          height: 120,
-                                          // child:Card(
-                                          //     elevation: 10,
-                                          //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                          // child: Container(
-                                          margin: EdgeInsets.only(
-                                              top: 10, bottom: 10, left: 20, right: 20),
-                                          //  color: Colors.transparent,
-                                          decoration: BoxDecoration(
-                                            border: Border(bottom: BorderSide(color: Colors.black45)),
-                                            color: Colors.transparent,
-                                            image: new DecorationImage(
-                                                image: AssetImage("images/books.png")),
-                                          ),
-                                          //    ),
-                                          // ),
-                                        ),
-                                        Container(
-                                            height: 50,
-                                           // width:180,
-                                            //color: Colors.green,
-                                            // child:Card(
-                                            // elevation: 10,
-                                            // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                            child:Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                              children:<Widget>[
-                                           // Padding(
-                                           //   padding: const EdgeInsets.only(top:10.0),
-                                               Text("Education",style: TextStyle(fontSize: 20),),
-                                           // ),
-                                                Text("$eduscore",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                                              ],
-                                            ),
-                                          // ),
-                                        ),
-                                      ],
                                     ),
                                   ),
                                 ),
-                              ),
-                              ),
+                                ),
 
 
 
         InkWell(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                Languagetest()));
+                  Languagetest()));
         },
 
 
 
-                              child: Container(
-                                height: 200,
-                               // width: 190,
-                                width: MediaQuery.of(context).size.width*0.46,
-                                child:Card(
-                                  elevation: 10,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                  child: Column(
-                                    children:<Widget>[
-                                      Container(
-                                        height: 120,
-                                        // child:Card(
-                                        //     elevation: 10,
-                                        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                        // child: Container(
-                                        margin: EdgeInsets.only(
-                                            top: 10, bottom: 10, left: 20, right: 20),
-                                        //  color: Colors.transparent,
-                                        decoration: BoxDecoration(
-                                          border: Border(bottom: BorderSide(color: Colors.black45)),
-                                          color: Colors.transparent,
-                                          image: new DecorationImage(
-                                              image: AssetImage("images/test.png")),
-                                        ),
-                                        //    ),
-                                        // ),
-                                      ),
-                                      Container(
-                                          height: 50,
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children:<Widget> [
-                                          //width:180,
-                                          //color: Colors.green,
-                                          // child:Card(
-                                          // elevation: 10,
-                                          // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                          //  Padding(
-                                          //   padding: const EdgeInsets.only(top:10.0),
-                                              Text("Language",style: TextStyle(fontSize: 20),),
-
-                                               Text(_accumulativelanguagescore().toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                                        //  )
-                                            ],
-                                          )
-                                        // ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                // color: Colors.green,
-                              ),
-    ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children:<Widget>[
-
-                            InkWell(
-                                    onTap: () {
-                             Navigator.push(context,MaterialPageRoute(builder: (context)=>
-                                 workexprience()));
-                            // Navigator.of(context).push(new MaterialPageRoute(builder: (_)=> new workexprience()),).then((value) => value?_getRequest():null);
-                            // _navigatoranddisplay(context);
-                  },
-
-
-
-
-
-
-
-                              child: Padding(
-                                padding: const EdgeInsets.only(left:10.0,right:10.0),
                                 child: Container(
                                   height: 200,
-                                  width: MediaQuery.of(context).size.width*0.46,
                                  // width: 190,
-                                  //color: Colors.black45,
+                                  width: MediaQuery.of(context).size.width*0.46,
                                   child:Card(
                                     elevation: 10,
                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
@@ -1389,374 +1313,455 @@ void didChangeAppLifecycleState(AppLifecycleState state) {
                                             border: Border(bottom: BorderSide(color: Colors.black45)),
                                             color: Colors.transparent,
                                             image: new DecorationImage(
-                                                image: AssetImage("images/briefcase.png")),
+                                                image: AssetImage("images/test.png")),
                                           ),
                                           //    ),
                                           // ),
                                         ),
                                         Container(
-                                            height: 70,
-                                           // width:180,
+                                            height: 50,
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                              children:<Widget> [
+                                            //width:180,
                                             //color: Colors.green,
                                             // child:Card(
                                             // elevation: 10,
                                             // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                            child:Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children:<Widget>[
-                                             //Padding(
-                                              //padding: const EdgeInsets.only(top:10.0),
-                                               Text("Work Experience",style: TextStyle(fontSize: 20),),
-                                               Text("$totalworkexprience",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                                           // )
-                                                 ],
-                                           ),
+                                            //  Padding(
+                                            //   padding: const EdgeInsets.only(top:10.0),
+                                                Text("Language",style: TextStyle(fontSize: 20),),
+
+                                                 Text(_accumulativelanguagescore().toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+                                          //  )
+                                              ],
+                                            )
+                                          // ),
                                         ),
                                       ],
                                     ),
                                   ),
+
+                                  // color: Colors.green,
                                 ),
-                              ),
+    ),
+                              ],
                             ),
-
-
-
-
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children:<Widget>[
 
                               InkWell(
-                                onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return AlertDialog(
-                                          content: Stack(
-                                            overflow: Overflow.visible,
-                                            children: <Widget>[
-                                              Container(
-                                                alignment: Alignment.center,
-                                                width: 300,
-                                                height: MediaQuery.of(context).size.height*0.45,
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                        image: AssetImage("images/cig_background_new.jpg"),
-                                                        fit: BoxFit.cover
-                                                    )
-                                                ),
-                                                child:ListView(
-                                                  scrollDirection: Axis.vertical,
-                                                  children:<Widget>[
-                                                    Column(
-                                                      children: <Widget>[
-                                                        InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              // educationvalue = 1.0;
-                                                              // educationcentervalue = "25";
-                                                              // totaleligibilityscore = _calculatiofinal();
-                                                              caneduscore =30;
-                                                              totalscore = _score();
-                                                            });
-                                                            Navigator.pop(context);
-                                                          },
-                                                          child: Padding(
-                                                            padding:
-                                                            const EdgeInsets.all(8.0),
-                                                            child: Container(
-                                                              height: 65,
-                                                              width: 350,
-                                                              child: Card(
-                                                                elevation: 5,
-                                                                margin: EdgeInsets.only(
-                                                                    top: 3.0, bottom: 3.0),
-                                                                color: Colors
-                                                                    .greenAccent.shade100,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                    BorderRadius.circular(
-                                                                        7.0)),
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    "Master Degree or professional degree needed to practice in a licensed profession",
-                                                                    style: TextStyle(
-                                                                        fontSize: 25),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              // educationvalue = 0.9;
-                                                              // educationcentervalue = "23";
-                                                              // totaleligibilityscore = _calculatiofinal();
-                                                              caneduscore =30;
-                                                              totalscore = _score();
-                                                            });
-                                                            Navigator.pop(context);
-                                                          },
-                                                          child: Padding(
-                                                            padding:
-                                                            const EdgeInsets.all(8.0),
-                                                            child: Container(
-                                                              height: 65,
-                                                              width: 350,
-                                                              child: Card(
-                                                                elevation: 5,
-                                                                margin: EdgeInsets.only(
-                                                                    top: 3.0, bottom: 3.0),
-                                                                color: Colors
-                                                                    .greenAccent.shade100,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                    BorderRadius.circular(
-                                                                        7.0)),
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    "Three years or longer degree, diploma or certificate",
-                                                                    style: TextStyle(
-                                                                        fontSize: 25),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              // educationvalue = 0.8;
-                                                              // educationcentervalue = "22";
-                                                              // totaleligibilityscore = _calculatiofinal();
-                                                              caneduscore =15;
-                                                              totalscore = _score();
-                                                            });
-                                                            Navigator.pop(context);
-                                                          },
-                                                          child: Padding(
-                                                            padding:
-                                                            const EdgeInsets.all(8.0),
-                                                            child: Container(
-                                                              height: 65,
-                                                              width: 350,
-                                                              child: Card(
-                                                                elevation: 5,
-                                                                margin: EdgeInsets.only(
-                                                                    top: 3.0, bottom: 3.0),
-                                                                color: Colors
-                                                                    .greenAccent.shade100,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                    BorderRadius.circular(
-                                                                        7.0)),
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    "One or Two degree or diploma or certificate",
-                                                                    style: TextStyle(
-                                                                        fontSize: 25),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              // educationvalue = 0.7;
-                                                              // educationcentervalue = "21";
-                                                              // totaleligibilityscore = _calculatiofinal();
-                                                              caneduscore =0;
-                                                              totalscore = _score();
-                                                            });
-                                                            Navigator.pop(context);
-                                                          },
-                                                          child: Padding(
-                                                            padding:
-                                                            const EdgeInsets.all(8.0),
-                                                            child: Container(
-                                                              height: 65,
-                                                              width: 350,
-                                                              child: Card(
-                                                                elevation: 5,
-                                                                margin: EdgeInsets.only(
-                                                                    top: 3.0, bottom: 3.0),
-                                                                color: Colors
-                                                                    .greenAccent.shade100,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                    BorderRadius.circular(
-                                                                        7.0)),
-                                                                child: Center(
-                                                                  child: Text(
-                                                                    "Secondary high school or none ",
-                                                                    style: TextStyle(
-                                                                        fontSize: 25),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
+                                      onTap: () {
+                               Navigator.push(context,MaterialPageRoute(builder: (context)=>
+                                   workexprience()));
+                              // Navigator.of(context).push(new MaterialPageRoute(builder: (_)=> new workexprience()),).then((value) => value?_getRequest():null);
+                              // _navigatoranddisplay(context);
+                    },
 
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              )
 
-                                            ],
+
+
+
+
+
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left:10.0,right:10.0),
+                                  child: Container(
+                                    height: 200,
+                                    width: MediaQuery.of(context).size.width*0.46,
+                                   // width: 190,
+                                    //color: Colors.black45,
+                                    child:Card(
+                                      elevation: 10,
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                      child: Column(
+                                        children:<Widget>[
+                                          Container(
+                                            height: 120,
+                                            // child:Card(
+                                            //     elevation: 10,
+                                            //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                            // child: Container(
+                                            margin: EdgeInsets.only(
+                                                top: 10,
+                                                bottom: 10,
+                                                left: 20, right: 20),
+                                            //  color: Colors.transparent,
+                                            decoration: BoxDecoration(
+                                              border: Border(bottom: BorderSide(color: Colors.black45)),
+                                              color: Colors.transparent,
+                                              image: new DecorationImage(
+                                                  image: AssetImage("images/briefcase.png")),
+                                            ),
+                                            //    ),
+                                            // ),
                                           ),
-                                        );
-                                      });
-                                },
-                              child: Container(
-                                height: 200,
-                                //width: 190,
-                                width: MediaQuery.of(context).size.width*0.46,
-                                child:Card(
-                                  elevation: 10,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                  child: Column(
-                                    children:<Widget>[
-                                      Container(
-                                        height: 120,
-                                        // child:Card(
-                                        //     elevation: 10,
-                                        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                        // child: Container(
-                                        margin: EdgeInsets.only(
-                                            top: 10, bottom: 10, left: 20, right: 20),
-                                        //  color: Colors.transparent,
-                                        decoration: BoxDecoration(
-                                          border: Border(bottom: BorderSide(color: Colors.black45)),
-                                          color: Colors.transparent,
-                                          image: new DecorationImage(
-                                              image: AssetImage("images/university-degree.png")),
-                                        ),
-                                        //    ),
-                                        // ),
-                                      ),
-                                      Container(
-                                          height: 50,
-                                          //width:180,
-                                          child:Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children:<Widget>[
-
-
-                                            Text("Canadian\nEducation",style: TextStyle(fontSize: 20),),
-                                              Text("$caneduscore",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-
-                                    ],
-                                  )
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                // color: Colors.green,
-                              ),
-                              ),
-                            ],
-                          ),
-
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                                  additional_points()));
-                            },
-
-
-                            child:Stack(
-                              children:<Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(bottom:40.0),
-                              child: Container(
-                                height: 140,
-                                // width: 190,
-                                width: MediaQuery.of(context).size.width*0.94,
-                                child:Card(
-                                  elevation: 10,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                  child: Column(
-                                    children:<Widget>[
-                                      Container(
-                                        height: 60,
-                                        // child:Card(
-                                        //     elevation: 10,
-                                        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                        // child: Container(
-                                        margin: EdgeInsets.only(
-                                            top: 10, bottom: 10, left: 20, right: 20),
-                                        //  color: Colors.transparent,
-                                        decoration: BoxDecoration(
-                                          border: Border(bottom: BorderSide(color: Colors.black45)),
-                                          color: Colors.transparent,
-                                          image: new DecorationImage(
-                                              image: AssetImage("images/plus.png")),
-                                        ),
-                                        //    ),
-                                        // ),
-                                      ),
-                                      Container(
-                                          height: 50,
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children:<Widget> [
-                                              //width:180,
+                                          Container(
+                                              height: 50,
+                                             // width:180,
                                               //color: Colors.green,
                                               // child:Card(
                                               // elevation: 10,
                                               // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                                              //  Padding(
-                                              //   padding: const EdgeInsets.only(top:10.0),
-                                              Text("Additional points",style: TextStyle(fontSize: 20),),
-
-                                              Text(additionalpoint().toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
-                                              //  )
-                                            ],
-                                          )
-                                        // ),
+                                              child:Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                              children:<Widget>[
+                                               //Padding(
+                                                //padding: const EdgeInsets.only(top:10.0),
+                                                 Text("Work\nExperience",style: TextStyle(fontSize: 20),),
+                                                 Text("$totalworkexprience",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+                                             // )
+                                                   ],
+                                             ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
+                              ),
 
-                                // color: Colors.green,
+
+
+
+
+                                InkWell(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            content: Stack(
+                                              overflow: Overflow.visible,
+                                              children: <Widget>[
+                                                Container(
+                                                  alignment: Alignment.center,
+                                                  width: 300,
+                                                  height: MediaQuery.of(context).size.height*0.45,
+                                                  decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                          image: AssetImage("images/cig_background_new.jpg"),
+                                                          fit: BoxFit.cover
+                                                      )
+                                                  ),
+                                                  child:ListView(
+                                                    scrollDirection: Axis.vertical,
+                                                    children:<Widget>[
+                                                      Column(
+                                                        children: <Widget>[
+                                                          InkWell(
+                                                            onTap: () {
+                                                              setState(() {
+                                                                // educationvalue = 1.0;
+                                                                // educationcentervalue = "25";
+                                                                // totaleligibilityscore = _calculatiofinal();
+                                                                caneduscore =30;
+                                                                totalscore = _score();
+                                                              });
+                                                              Navigator.pop(context);
+                                                            },
+                                                            child: Padding(
+                                                              padding:
+                                                              const EdgeInsets.all(8.0),
+                                                              child: Container(
+                                                                height: 65,
+                                                                width: 350,
+                                                                child: Card(
+                                                                  elevation: 5,
+                                                                  margin: EdgeInsets.only(
+                                                                      top: 3.0, bottom: 3.0),
+                                                                  color: Colors
+                                                                      .greenAccent.shade100,
+                                                                  shape: RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                      BorderRadius.circular(
+                                                                          7.0)),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      "Master Degree or professional degree needed to practice in a licensed profession",
+                                                                      style: TextStyle(
+                                                                          fontSize: 25),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          InkWell(
+                                                            onTap: () {
+                                                              setState(() {
+                                                                // educationvalue = 0.9;
+                                                                // educationcentervalue = "23";
+                                                                // totaleligibilityscore = _calculatiofinal();
+                                                                caneduscore =30;
+                                                                totalscore = _score();
+                                                              });
+                                                              Navigator.pop(context);
+                                                            },
+                                                            child: Padding(
+                                                              padding:
+                                                              const EdgeInsets.all(8.0),
+                                                              child: Container(
+                                                                height: 65,
+                                                                width: 350,
+                                                                child: Card(
+                                                                  elevation: 5,
+                                                                  margin: EdgeInsets.only(
+                                                                      top: 3.0, bottom: 3.0),
+                                                                  color: Colors
+                                                                      .greenAccent.shade100,
+                                                                  shape: RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                      BorderRadius.circular(
+                                                                          7.0)),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      "Three years or longer degree, diploma or certificate",
+                                                                      style: TextStyle(
+                                                                          fontSize: 25),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          InkWell(
+                                                            onTap: () {
+                                                              setState(() {
+                                                                // educationvalue = 0.8;
+                                                                // educationcentervalue = "22";
+                                                                // totaleligibilityscore = _calculatiofinal();
+                                                                caneduscore =15;
+                                                                totalscore = _score();
+                                                              });
+                                                              Navigator.pop(context);
+                                                            },
+                                                            child: Padding(
+                                                              padding:
+                                                              const EdgeInsets.all(8.0),
+                                                              child: Container(
+                                                                height: 65,
+                                                                width: 350,
+                                                                child: Card(
+                                                                  elevation: 5,
+                                                                  margin: EdgeInsets.only(
+                                                                      top: 3.0, bottom: 3.0),
+                                                                  color: Colors
+                                                                      .greenAccent.shade100,
+                                                                  shape: RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                      BorderRadius.circular(
+                                                                          7.0)),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      "One or Two degree or diploma or certificate",
+                                                                      style: TextStyle(
+                                                                          fontSize: 25),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          InkWell(
+                                                            onTap: () {
+                                                              setState(() {
+                                                                // educationvalue = 0.7;
+                                                                // educationcentervalue = "21";
+                                                                // totaleligibilityscore = _calculatiofinal();
+                                                                caneduscore =0;
+                                                                totalscore = _score();
+                                                              });
+                                                              Navigator.pop(context);
+                                                            },
+                                                            child: Padding(
+                                                              padding:
+                                                              const EdgeInsets.all(8.0),
+                                                              child: Container(
+                                                                height: 65,
+                                                                width: 350,
+                                                                child: Card(
+                                                                  elevation: 5,
+                                                                  margin: EdgeInsets.only(
+                                                                      top: 3.0, bottom: 3.0),
+                                                                  color: Colors
+                                                                      .greenAccent.shade100,
+                                                                  shape: RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                      BorderRadius.circular(
+                                                                          7.0)),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      "Secondary high school or none ",
+                                                                      style: TextStyle(
+                                                                          fontSize: 25),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+
+                                              ],
+                                            ),
+                                          );
+                                        });
+                                  },
+                                child: Container(
+                                  height: 200,
+                                  //width: 190,
+                                  width: MediaQuery.of(context).size.width*0.46,
+                                  child:Card(
+                                    elevation: 10,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                    child: Column(
+                                      children:<Widget>[
+                                        Container(
+                                          height: 120,
+                                          // child:Card(
+                                          //     elevation: 10,
+                                          //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                          // child: Container(
+                                          margin: EdgeInsets.only(
+                                              top: 10, bottom: 10, left: 20, right: 20),
+                                          //  color: Colors.transparent,
+                                          decoration: BoxDecoration(
+                                            border: Border(bottom: BorderSide(color: Colors.black45)),
+                                            color: Colors.transparent,
+                                            image: new DecorationImage(
+                                                image: AssetImage("images/university-degree.png")),
+                                          ),
+                                          //    ),
+                                          // ),
+                                        ),
+                                        Container(
+                                            height: 50,
+                                            //width:180,
+                                         //   color: Colors.green,
+                                            child:Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                              children:<Widget>[
+
+
+                                              Text("Canadian\nEducation",style: TextStyle(fontSize: 20),),
+                                                Text("$caneduscore",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+
+                                      ],
+                                    )
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  // color: Colors.green,
+                                ),
+                                ),
+                              ],
+                            ),
+
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                                    additional_points()));
+                              },
+
+
+                              child:Stack(
+                                children:<Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(bottom:40.0),
+                                child: Container(
+                                  height: 140,
+                                  // width: 190,
+                                  width: MediaQuery.of(context).size.width*0.94,
+                                  child:Card(
+                                    elevation: 10,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                    child: Column(
+                                      children:<Widget>[
+                                        Container(
+                                          height: 60,
+                                          // child:Card(
+                                          //     elevation: 10,
+                                          //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                          // child: Container(
+                                          margin: EdgeInsets.only(
+                                              top: 10, bottom: 10, left: 20, right: 20),
+                                          //  color: Colors.transparent,
+                                          decoration: BoxDecoration(
+                                            border: Border(bottom: BorderSide(color: Colors.black45)),
+                                            color: Colors.transparent,
+                                            image: new DecorationImage(
+                                                image: AssetImage("images/plus.png")),
+                                          ),
+                                          //    ),
+                                          // ),
+                                        ),
+                                        Container(
+                                            height: 50,
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                              children:<Widget> [
+                                                //width:180,
+                                                //color: Colors.green,
+                                                // child:Card(
+                                                // elevation: 10,
+                                                // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                                //  Padding(
+                                                //   padding: const EdgeInsets.only(top:10.0),
+                                                Text("Additional points",style: TextStyle(fontSize: 20),),
+
+                                                Text(additionalpoint().toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
+                                                //  )
+                                              ],
+                                            )
+                                          // ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  // color: Colors.green,
+                                ),
+                              ),
+
+
+                                  Positioned(
+                                    right: 0.0,
+                                    //bottom: 1.0,
+                                    top: 0.5,
+                                    child:FloatingActionButton(
+                                      backgroundColor: Colors.deepOrange,
+                                      foregroundColor: Colors.black,
+                                      onPressed: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                                            crsanalysis()));
+                                      },child:Icon(Icons.insert_drive_file,color: Colors.white,),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
 
 
-                                Positioned(
-                                  right: 0.0,
-                                  //bottom: 1.0,
-                                  top: 0.5,
-                                  child:FloatingActionButton(
-                                    backgroundColor: Colors.deepOrange,
-                                    foregroundColor: Colors.black,
-                                    onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                                          crsanalysis()));
-                                    },child:Icon(Icons.insert_drive_file,color: Colors.white,),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
 
 
 
 
-
-
-                  ],
-                      ),
-                        ],
-                     ),
+                    ],
+                        ),
+                          ],
+                       ),
              //     ],
-                  ),
+                    ),
+                ),
            //   ),
           //   )
   ],
@@ -3114,6 +3119,7 @@ class _languagescoreState extends State<languagescore> {
                                 onChanged: (value) {
                                   setState(() {
                                     slidervalue = value;
+
                                     totalscore = _score();
                                   });
                                 },

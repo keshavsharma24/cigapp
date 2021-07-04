@@ -2490,6 +2490,7 @@ class _eligiblitycalciState extends State<eligiblitycalci> with TickerProviderSt
                       child: Container(
                         height: 180,
                         width: 120,
+                       // color:Colors.yellow,
                         child: Card(
                           elevation: 5,
 

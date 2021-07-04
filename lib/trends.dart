@@ -74,7 +74,7 @@ class _poolsState extends State<pools> {
                   child: StreamBuilder(
                     stream: Firestore.instance.collection('Trends').snapshots(),
                     builder: (context, snapshot){
-                      if(!snapshot.hasData) return Text("Loading Data... Plese wait");
+                      if(!snapshot.hasData) return Center(child: Text("Loading Data... Plese wait"));
                       return
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
