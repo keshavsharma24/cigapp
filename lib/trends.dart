@@ -834,38 +834,7 @@ class _poolsState extends State<pools> {
           ],
         ),
       ),
-      bottomNavigationBar:
-      BottomNavigationBar(
-        onTap: (_index){
-          setState(() {
-            if (_index ==0){
-              // Homeselected = true;
-              // Ebookselected = false;
-              // settingsselected =false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> CigApp()));
-            }
-            else if(_index ==1){
-              // Ebookselected =true;
-              // Homeselected =false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> books()));
-            }
-            else if(_index ==2){
-              // settingsselected =true;
-              // Homeselected =false;
-              // Ebookselected =false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> setting()));
-            }
-          });
-        },
-        currentIndex: _index =0,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.deepOrangeAccent.shade200,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home,),title: Text("Home")),
-          BottomNavigationBarItem(icon: Icon(Icons.library_books,),title: Text("E-Book")),
-          BottomNavigationBarItem(icon: Icon(Icons.settings,),title: Text("Settings")),
-        ],
-      ),
+
     );
   }
 }

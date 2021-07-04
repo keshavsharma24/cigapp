@@ -1,8 +1,10 @@
+import 'package:cigapp/CigApp.dart';
 import 'package:cigapp/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:toast/toast.dart';
 import 'login.dart';
 
 String email, password;
@@ -15,7 +17,6 @@ class signup extends StatefulWidget {
 class _signupState extends State<signup> {
   final _auth = FirebaseAuth.instance;
   bool showProgress = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +93,7 @@ class _signupState extends State<signup> {
 
                       if (newuser != null) {
                        // emailid =email;
+                        setUserLoggedIn(email);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -101,8 +103,20 @@ class _signupState extends State<signup> {
                         setState(() {
                           showProgress = false;
                         });
-                      }
-                    } catch (e) {}
+                      }else
+                        {
+                          Toast.show("Something Went Wrong Please Try Again!", context);
+                          setState(() {
+                            showProgress = false;
+                          });
+
+                        }
+                    } catch (e) {
+                      Toast.show("Something Went Wrong Please Try Again!", context);
+                      setState(() {
+                        showProgress = false;
+                      });
+                    }
                   },
                   minWidth: 200.0,
                   height: 45.0,
@@ -135,4 +149,13 @@ class _signupState extends State<signup> {
       ),
     );
   }
+
+  void setUserLoggedIn(String email) async
+  {
+    Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    prefs.setInt("LoginInfo", 1);
+    prefs.setString("email", email);
+  }
+
 }

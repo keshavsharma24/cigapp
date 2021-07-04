@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'crscalci.dart';
 import 'registration.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -200,6 +201,7 @@ class _settingState extends State<setting> {
                       }
 
                       _signOut();
+                      setUserLoggedOut();
                       Fluttertoast.showToast(
                           msg: "Logout Successfull",
                           toastLength: Toast.LENGTH_SHORT,
@@ -273,5 +275,11 @@ class _settingState extends State<setting> {
         ],
       ),
     );
+  }
+  void setUserLoggedOut() async
+  {
+    Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    prefs.setInt("LoginInfo", 0);
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 var emailid;
 
@@ -97,18 +98,47 @@ class _MyLoginPageState extends State<MyLoginPage> {
                         Fluttertoast.showToast(
                             msg: "Login Successfull",
                             toastLength: Toast.LENGTH_SHORT,
-                            gravity: ToastGravity.CENTER,
+                            gravity: ToastGravity.BOTTOM,
                           //  timeInSecForIos: 1,
-                            backgroundColor: Colors.blueAccent,
-                            textColor: Colors.white,
-                            fontSize: 16.0);
+                            textColor: Colors.blueAccent,
+                            backgroundColor: Colors.white,
+                            fontSize: 10.0);
                         setState(() {
                           showProgress = false;
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                              CigApp()));
+                          print("Email obje t ${email}");
+                          setUserLoggedIn(email);
+                          dispose();
+                          Navigator.pushAndRemoveUntil<dynamic>(context, MaterialPageRoute(builder: (context) =>
+                              CigApp()),(route) => false);
                         });
-                      }
-                    } catch (e) {}
+                      }else
+                        {
+                          Fluttertoast.showToast(
+                              msg: "Invalid Credentials!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              //  timeInSecForIos: 1,
+                              backgroundColor: Colors.white,
+                              textColor: Colors.blueAccent,
+                              fontSize: 10.0);
+                          setState(() {
+                            showProgress = false;
+                          });
+                        }
+
+                    } catch (e) {
+                      Fluttertoast.showToast(
+                          msg: "Invalid Credentials!",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          //  timeInSecForIos: 1,
+                          backgroundColor: Colors.white,
+                          textColor: Colors.blueAccent,
+                          fontSize: 10.0);
+                      setState(() {
+                        showProgress = false;
+                      });
+                    }
                   },
                   minWidth: 200.0,
                   height: 45.0,
@@ -124,5 +154,13 @@ class _MyLoginPageState extends State<MyLoginPage> {
         ),
       ),
     );
+  }
+  void setUserLoggedIn(String email) async
+  {
+    Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    prefs.setInt("LoginInfo", 1);
+    prefs.setString("email", email);
+    print("our email is $email");
   }
 }

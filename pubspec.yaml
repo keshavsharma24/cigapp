@@ -42,6 +42,7 @@ dependencies:
   flutter_form_builder: ^3.7.2
   url_launcher: ^5.4.0
   animations: ^1.1.2
+  shared_preferences: ^2.0.6
 
 
 
@@ -103,6 +104,7 @@ flutter:
     - images/building.png
     - images/cig_background.jpg
     - images/cig_background_new.jpg
+    - images/ic_launcher.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -10,6 +10,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/services.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 //import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -66,13 +67,22 @@ bool Ebookselected =false;
 bool settingsselected =false;
 
 
-class crscalci extends StatefulWidget {
+class crscalci extends StatefulWidget  {
   @override
   _crscalciState createState() => _crscalciState();
 }
 
- class _crscalciState extends State<crscalci> {
+ class _crscalciState extends State<crscalci> with TickerProviderStateMixin {
 _getRequest()async{}
+
+@override
+void didChangeAppLifecycleState(AppLifecycleState state) {
+  setState((){
+    additional =caneduscore+_frenchlanguagetestscore()+relationpoints+nominationpoints+lmiapoint();
+  });
+}
+
+
   @override
   Widget build(BuildContext context) {
     int _index =0;
@@ -1385,7 +1395,7 @@ _getRequest()async{}
                                           // ),
                                         ),
                                         Container(
-                                            height: 50,
+                                            height: 70,
                                            // width:180,
                                             //color: Colors.green,
                                             // child:Card(
@@ -1396,7 +1406,7 @@ _getRequest()async{}
                                             children:<Widget>[
                                              //Padding(
                                               //padding: const EdgeInsets.only(top:10.0),
-                                               Text("Work \nExperience",style: TextStyle(fontSize: 20),),
+                                               Text("Work Experience",style: TextStyle(fontSize: 20),),
                                                Text("$totalworkexprience",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)
                                            // )
                                                  ],
@@ -1751,40 +1761,6 @@ _getRequest()async{}
           //   )
   ],
     ),
-      ),
-
-      bottomNavigationBar:
-      BottomNavigationBar(
-        onTap: (_index){
-          setState(() {
-            if (_index ==0){
-              Homeselected = true;
-              Ebookselected =false;
-              settingsselected =false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> CigApp()));
-            }
-            else if(_index ==1){
-              Ebookselected =true;
-              Homeselected =false;
-              settingsselected =false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> books()));
-            }
-            else if(_index ==2){
-              settingsselected =true;
-              Homeselected=false;
-              Ebookselected=false;
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> setting()));
-            }
-          });
-        },
-        currentIndex: _index,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.deepOrangeAccent.shade200,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home,),title: Text("Home")),
-          BottomNavigationBarItem(icon: Icon(Icons.library_books,),title: Text("E-Book")),
-          BottomNavigationBarItem(icon: Icon(Icons.settings,),title: Text("Settings")),
-        ],
       ),
 
     );
@@ -2253,6 +2229,7 @@ class _crsanalysisState extends State<crsanalysis> {
 
     );
   }
+
 }
 
 
@@ -2432,11 +2409,7 @@ class _additional_pointsState extends State<additional_points> {
                         padding: const EdgeInsets.all(15.0),
                         child: MaterialButton(
                           onPressed: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        crscalci()))
+                            Navigator.pop(context)
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
